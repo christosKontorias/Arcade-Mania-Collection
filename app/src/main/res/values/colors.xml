@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Bottom Navigation Bar-->
+    <color name="lavender">#8692f7</color>
+
+    <!--Bottom Navigation Bar Settings-->
+    <color name="primary">#1B023B</color>
+    <color name="secondary">#FF03DAC5</color>
+    <color name="round_back_1">#6124B1</color>
+    <color name="round_back_2">#1645F5</color>
+    <color name="round_back_3">#F0F14E</color>
+    <color name="round_back_4">#D95F69</color>
 </resources>
