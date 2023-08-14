@@ -9,7 +9,7 @@
         android:title="Categories"
         android:icon="@drawable/baseline_categories_24"/>
     <item
-        android:title="" />
+        android:title=""/>
     <item
         android:id="@+id/search"
         android:title="Search"
