@@ -14,9 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.window.SplashScreen;
 
 import com.example.arcademania.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.categories:
-                    replaceFragment(new CategoriesFragment());
+                    replaceFragment(new CategoriesActivity());
                     break;
                 case R.id.search:
                     replaceFragment(new SearchFragment());
