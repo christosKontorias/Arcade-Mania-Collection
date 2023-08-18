@@ -25,7 +25,7 @@
             android:textAllCaps="true"
             android:padding="10dp"/>
 
-        <!-- 1 Game-->
+        <!-- Pac-Man 1) Game-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="190dp">
@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="25dp"
-                    android:text="Title Game 1"
+                    android:text="Pac-Man"
                     android:textColor="@color/black"
                     android:textSize="30sp" />
 
@@ -66,7 +66,7 @@
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
-        <!-- 2 Game-->
+        <!-- Space Invaders 2) Game-->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="25dp"
-                android:text="Title Game 2"
+                android:text="Space Invaders"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:layout_alignParentRight="true"/>
@@ -107,7 +107,7 @@
         </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- 3 Game-->
+        <!-- Galaga 3) Game-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="190dp">
@@ -125,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="25dp"
-                    android:text="Title Game 3"
+                    android:text="Galaga"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
 
@@ -148,7 +148,7 @@
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
-        <!-- 4 Game-->
+        <!-- Donkey Kong 4) Game-->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,7 +171,499 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="25dp"
-                    android:text="Title Game 4"
+                    android:text="Donkey Kong"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_alignParentRight="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Frogger 5) Game-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#F0F14E">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Frogger"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <!-- Centipede 6) Game-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#00000000"
+            app:cardElevation="8dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#1645F5">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Centipede"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_alignParentRight="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Asteroids 7) Game-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#6124B1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Asteroids"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <!-- Defender 7) Game-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#00000000"
+            app:cardElevation="8dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#D95F69">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Defender"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_alignParentRight="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Street Fighter II 8) Game-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#F0F14E">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Street Fighter II"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <!-- Tetris 9) Game-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#00000000"
+            app:cardElevation="8dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#1645F5">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Tetris"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_alignParentRight="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Dig Dug 10) Game-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#6124B1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Dig Dug"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <!-- Bubble Bobble 11) Game-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#00000000"
+            app:cardElevation="8dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#D95F69">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Bubble Bobble"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_alignParentRight="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Rampage 12) Game-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#F0F14E">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Rampage"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/black" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <!-- Mortal Kombat 13) Game-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#00000000"
+            app:cardElevation="8dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#1645F5">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Mortal Kombat"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:layout_alignParentRight="true"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Q*bert 14) Game-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#6124B1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Q*bert"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00FFFFFF"
+                    android:padding="20dp"
+                    android:text="Open"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <!-- Double Dragon 15) Game-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#00000000"
+            app:cardElevation="8dp"
+            android:layout_margin="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#D95F69">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:text="Double Dragon"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:layout_alignParentRight="true"/>
@@ -189,4 +681,5 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
 </ScrollView>
