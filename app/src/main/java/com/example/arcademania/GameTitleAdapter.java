@@ -24,10 +24,7 @@ public class GameTitleAdapter extends RecyclerView.Adapter<GameTitleAdapter.Game
     public class GameTitleViewHolder extends RecyclerView.ViewHolder {
         ImageView gameLogo;
         TextView gameTitle;
-
         MaterialCardView gameCardView;
-
-
 
         public GameTitleViewHolder(View itemView) {
             super(itemView);

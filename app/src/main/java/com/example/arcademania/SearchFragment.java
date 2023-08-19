@@ -70,20 +70,22 @@ public class SearchFragment extends Fragment {
     }
 
     private void addDataToList() {
-        mList.add(new GameTitleData("Game 1", R.drawable.baseline_home_24));
-        mList.add(new GameTitleData("Game 2", R.drawable.baseline_search_24));
-        mList.add(new GameTitleData("Game 3", R.drawable.baseline_profile_24));
-        mList.add(new GameTitleData("Game 4", R.drawable.baseline_home_24));
-        mList.add(new GameTitleData("Game 5", R.drawable.baseline_search_24));
-        mList.add(new GameTitleData("Game 6", R.drawable.baseline_profile_24));
-        mList.add(new GameTitleData("Game 7", R.drawable.baseline_home_24));
-        mList.add(new GameTitleData("Game 8", R.drawable.baseline_search_24));
-        mList.add(new GameTitleData("Game 9", R.drawable.baseline_profile_24));
-        mList.add(new GameTitleData("Game 10", R.drawable.baseline_home_24));
-        mList.add(new GameTitleData("Game 11", R.drawable.baseline_search_24));
-        mList.add(new GameTitleData("Game 12", R.drawable.baseline_profile_24));
-        mList.add(new GameTitleData("Game 13", R.drawable.baseline_home_24));
-        mList.add(new GameTitleData("Game 14", R.drawable.baseline_search_24));
+        mList.add(new GameTitleData("PacMan", R.drawable.pac_man_logo));
+        mList.add(new GameTitleData("Space Invaders", R.drawable.space_invaders_logo));
+        mList.add(new GameTitleData("Galaga", R.drawable.galaga_logo));
+        mList.add(new GameTitleData("Donkey Kong", R.drawable.donkey_kong_logo));
+        mList.add(new GameTitleData("Frogger", R.drawable.frogger_logo));
+        mList.add(new GameTitleData("Centipede", R.drawable.centipede_logo));
+        mList.add(new GameTitleData("Asteroids", R.drawable.asteroids_logo));
+        mList.add(new GameTitleData("Defender", R.drawable.defender_logo));
+        mList.add(new GameTitleData("Street Fighter II", R.drawable.street_fighter_ii_logo));
+        mList.add(new GameTitleData("Tetris", R.drawable.tetris_logo));
+        mList.add(new GameTitleData("Dig Dug", R.drawable.dig_dug));
+        mList.add(new GameTitleData("Bubble Bubble", R.drawable.bubble_bobble_logo));
+        mList.add(new GameTitleData("Rampage", R.drawable.rampage_logo));
+        mList.add(new GameTitleData("Mortal Kombat", R.drawable.mortal_kombat_logo));
+        mList.add(new GameTitleData("Q*bert", R.drawable.qbert_logo));
+        mList.add(new GameTitleData("Double Dragon", R.drawable.double_dragon_logo));
 
     }
 }
