@@ -86,7 +86,6 @@ public class SearchFragment extends Fragment {
         mList.add(new GameTitleData("Mortal Kombat", R.drawable.mortal_kombat_logo));
         mList.add(new GameTitleData("Q*bert", R.drawable.qbert_logo));
         mList.add(new GameTitleData("Double Dragon", R.drawable.double_dragon_logo));
-
     }
 }
 
