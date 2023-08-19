@@ -32,6 +32,13 @@ android {
             enabled = true
         }
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -45,6 +52,4 @@ dependencies {
 
     //Animated GIF
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
-
-
 }

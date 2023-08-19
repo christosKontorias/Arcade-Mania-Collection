@@ -1,4 +1,4 @@
-package com.example.arcademania;
+package com.example.arcademania.SearchFragmentHelper;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.arcademania.R;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
@@ -57,13 +58,13 @@ public class GameTitleAdapter extends RecyclerView.Adapter<GameTitleAdapter.Game
         return mList.size();
     }
     */
-public class GameTitleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_ONE = 1;
     private static final int VIEW_TYPE_TWO = 2;
 
-    private List<GameTitleData> mList;
+    private List<GameData> mList;
 
-    public GameTitleAdapter(List<GameTitleData> mList) {
+    public GameAdapter(List<GameData> mList) {
         this.mList = mList;
     }
 
@@ -95,7 +96,7 @@ public class GameTitleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    public void setFilteredList(List<GameTitleData> mList) {
+    public void setFilteredList(List<GameData> mList) {
         this.mList = mList;
         notifyDataSetChanged();
     }
@@ -105,10 +106,10 @@ public class GameTitleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         if (viewType == VIEW_TYPE_ONE) {
-            View view = inflater.inflate(R.layout.games_item_1, parent, false);
+            View view = inflater.inflate(R.layout.search_games_item_1, parent, false);
             return new GameTitleViewHolderTypeOne(view);
         } else if (viewType == VIEW_TYPE_TWO) {
-            View view = inflater.inflate(R.layout.games_item_2, parent, false);
+            View view = inflater.inflate(R.layout.search_games_item_2, parent, false);
             return new GameTitleViewHolderTypeTwo(view);
         }
 
@@ -117,7 +118,7 @@ public class GameTitleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        GameTitleData item = mList.get(position);
+        GameData item = mList.get(position);
 
         if (holder instanceof GameTitleViewHolderTypeOne) {
             GameTitleViewHolderTypeOne typeOneHolder = (GameTitleViewHolderTypeOne) holder;
