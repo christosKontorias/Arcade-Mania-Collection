@@ -14,6 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:padding="8dp">
 
         <androidx.cardview.widget.CardView
@@ -22,13 +23,15 @@
             android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/transparent">
 
             <ImageView
                 android:id="@+id/gameLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
+                android:background="@drawable/round_background_images_search"
                 android:scaleType="fitXY"/>
         </androidx.cardview.widget.CardView>
 
@@ -36,13 +39,13 @@
             android:id="@+id/gameTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="32dp"
             android:text="Game Name"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
