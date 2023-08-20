@@ -88,7 +88,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/darkModeIcon"
-                android:src="@drawable/baseline_home_24"
+                android:src="@drawable/baseline_dark_mode_24"
                 android:background="@drawable/round_back_1"
                 android:padding="12dp"/>
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Title"
+                android:text="Dark Mode"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/darkModeIcon"/>
@@ -120,7 +120,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/notificationIcon"
-                android:src="@drawable/baseline_home_24"
+                android:src="@drawable/baseline_notifications_24"
                 android:background="@drawable/round_back_2"
                 android:padding="12dp"/>
             <TextView
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Title"
+                android:text="Notifications"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/notificationIcon"/>
@@ -152,7 +152,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/privateAccountIcon"
-                android:src="@drawable/baseline_home_24"
+                android:src="@drawable/baseline_security_24"
                 android:background="@drawable/round_back_3"
                 android:padding="12dp"/>
             <TextView
@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Title"
+                android:text="Private Account"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/privateAccountIcon"/>
@@ -194,7 +194,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/aboutUsIcon"
-                android:src="@drawable/baseline_home_24"
+                android:src="@drawable/baseline_privacy_tip_24"
                 android:background="@drawable/round_back_4"
                 android:padding="12dp"/>
             <TextView
@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Title"
+                android:text="Security &amp; Privacy"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/aboutUsIcon"/>
@@ -226,13 +226,13 @@
                 android:layout_height="40dp"
                 android:background="@drawable/round_back_1"
                 android:padding="12dp"
-                android:src="@drawable/baseline_home_24" />
+                android:src="@drawable/baseline_info_24" />
             <TextView
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Title"
+                android:text="About Us"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/messageIcon"/>
@@ -269,7 +269,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/logOutIcon"
-                android:src="@drawable/baseline_home_24"
+                android:src="@drawable/baseline_logout_24"
                 android:background="@drawable/round_back_2"
                 android:padding="12dp"/>
             <TextView
@@ -277,7 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Title"
+                android:text="Log Out"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_toEndOf="@id/logOutIcon"/>
