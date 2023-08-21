@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,18 +20,26 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.arcademania.databinding.ActivityMainBinding;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     FloatingActionButton fab;
+    private BottomAppBar bottomAppBar;
+    private FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
+
+        bottomAppBar = findViewById(R.id.bottomAppBar);
+        floatingActionButton = findViewById(R.id.fab);
 
         fab = findViewById(R.id.fab);
         binding.bottomNavigationView.setBackground(null);
@@ -88,6 +98,17 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
+    }
+
+    //Hide the navigation menu bar in Profile Fragment
+    public void hideBottomAppBar() {
+        bottomAppBar.setVisibility(View.GONE);
+        floatingActionButton.setVisibility(View.GONE);
+    }
+
+    public void showBottomAppBar() {
+        bottomAppBar.setVisibility(View.VISIBLE);
+        floatingActionButton.setVisibility(View.VISIBLE);
     }
 
 }
