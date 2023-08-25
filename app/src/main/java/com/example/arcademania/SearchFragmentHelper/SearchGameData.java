@@ -1,11 +1,11 @@
 package com.example.arcademania.SearchFragmentHelper;
 
 
-public class GameData {
+public class SearchGameData {
     private String gameTitle;
     private int gameLogo;
 
-    public GameData(String gameTitle, int gameLogo) {
+    public SearchGameData(String gameTitle, int gameLogo) {
         this.gameTitle = gameTitle;
         this.gameLogo = gameLogo;
     }

@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.arcademania.SearchFragmentHelper.GameAdapter;
-import com.example.arcademania.SearchFragmentHelper.GameData;
+import com.example.arcademania.SearchFragmentHelper.SearchGameAdapter;
+import com.example.arcademania.SearchFragmentHelper.SearchGameData;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -22,8 +22,8 @@ import java.util.Locale;
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
     private SearchView searchView;
-    private ArrayList<GameData> mList = new ArrayList<>();
-    private GameAdapter adapter;
+    private ArrayList<SearchGameData> mList = new ArrayList<>();
+    private SearchGameAdapter adapter;
 
     @Nullable
     @Override
@@ -37,7 +37,7 @@ public class SearchFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         addDataToList();
-        adapter = new GameAdapter(mList);
+        adapter = new SearchGameAdapter(mList);
         recyclerView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -58,8 +58,8 @@ public class SearchFragment extends Fragment {
 
     private void filterList(String query) {
         if (query != null) {
-            ArrayList<GameData> filteredList = new ArrayList<>();
-            for (GameData i : mList) {
+            ArrayList<SearchGameData> filteredList = new ArrayList<>();
+            for (SearchGameData i : mList) {
                 if (i.getGameTitle().toLowerCase(Locale.ROOT).contains(query)) {
                     filteredList.add(i);
                 }
@@ -74,22 +74,22 @@ public class SearchFragment extends Fragment {
     }
 
     private void addDataToList() {
-        mList.add(new GameData("PacMan", R.drawable.pac_man_logo));
-        mList.add(new GameData("Space Invaders", R.drawable.space_invaders_logo));
-        mList.add(new GameData("Galaga", R.drawable.galaga_logo));
-        mList.add(new GameData("Donkey Kong", R.drawable.donkey_kong_logo));
-        mList.add(new GameData("Frogger", R.drawable.frogger_logo));
-        mList.add(new GameData("Centipede", R.drawable.centipede_logo));
-        mList.add(new GameData("Asteroids", R.drawable.asteroids_logo));
-        mList.add(new GameData("Defender", R.drawable.defender_logo));
-        mList.add(new GameData("Street Fighter II", R.drawable.street_fighter_ii_logo));
-        mList.add(new GameData("Tetris", R.drawable.tetris_logo));
-        mList.add(new GameData("Dig Dug", R.drawable.dig_dug));
-        mList.add(new GameData("Bubble Bubble", R.drawable.bubble_bobble_logo));
-        mList.add(new GameData("Rampage", R.drawable.rampage_logo));
-        mList.add(new GameData("Mortal Kombat", R.drawable.mortal_kombat_logo));
-        mList.add(new GameData("Q*bert", R.drawable.qbert_logo));
-        mList.add(new GameData("Double Dragon", R.drawable.double_dragon_logo));
+        mList.add(new SearchGameData("PacMan", R.drawable.pac_man_logo));
+        mList.add(new SearchGameData("Space Invaders", R.drawable.space_invaders_logo));
+        mList.add(new SearchGameData("Galaga", R.drawable.galaga_logo));
+        mList.add(new SearchGameData("Donkey Kong", R.drawable.donkey_kong_logo));
+        mList.add(new SearchGameData("Frogger", R.drawable.frogger_logo));
+        mList.add(new SearchGameData("Centipede", R.drawable.centipede_logo));
+        mList.add(new SearchGameData("Asteroids", R.drawable.asteroids_logo));
+        mList.add(new SearchGameData("Defender", R.drawable.defender_logo));
+        mList.add(new SearchGameData("Street Fighter II", R.drawable.street_fighter_ii_logo));
+        mList.add(new SearchGameData("Tetris", R.drawable.tetris_logo));
+        mList.add(new SearchGameData("Dig Dug", R.drawable.dig_dug));
+        mList.add(new SearchGameData("Bubble Bubble", R.drawable.bubble_bobble_logo));
+        mList.add(new SearchGameData("Rampage", R.drawable.rampage_logo));
+        mList.add(new SearchGameData("Mortal Kombat", R.drawable.mortal_kombat_logo));
+        mList.add(new SearchGameData("Q*bert", R.drawable.qbert_logo));
+        mList.add(new SearchGameData("Double Dragon", R.drawable.double_dragon_logo));
     }
 }
 

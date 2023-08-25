@@ -13,58 +13,14 @@ import com.example.arcademania.R;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
-/*
-public class GameTitleAdapter extends RecyclerView.Adapter<GameTitleAdapter.GameTitleViewHolder> {
 
-    private List<GameTitleData> mList;
-    public GameTitleAdapter(List<GameTitleData> mList) {
-        this.mList = mList;
-    }
-    public class GameTitleViewHolder extends RecyclerView.ViewHolder {
-        ImageView gameLogo;
-        TextView gameTitle;
-        MaterialCardView gameCardView;
-
-        public GameTitleViewHolder(View itemView) {
-            super(itemView);
-            gameLogo = itemView.findViewById(R.id.gameLogo);
-            gameTitle = itemView.findViewById(R.id.gameTitle);
-            gameCardView = itemView.findViewById(R.id.gameCardView);
-        }
-    }
-
-    public void setFilteredList(List<GameTitleData> mList) {
-        this.mList = mList;
-        notifyDataSetChanged();
-    }
-
-    @Override
-    public GameTitleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.games_item_1, parent, false);
-        return new GameTitleViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(GameTitleViewHolder holder, int position) {
-        holder.gameLogo.setImageResource(mList.get(position).getGameLogo());
-        holder.gameTitle.setText(mList.get(position).getGameTitle());
-
-        //Animation
-        holder.gameCardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim_game_search));
-    }
-
-    @Override
-    public int getItemCount() {
-        return mList.size();
-    }
-    */
-public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_ONE = 1;
     private static final int VIEW_TYPE_TWO = 2;
 
-    private List<GameData> mList;
+    private List<SearchGameData> mList;
 
-    public GameAdapter(List<GameData> mList) {
+    public SearchGameAdapter(List<SearchGameData> mList) {
         this.mList = mList;
     }
 
@@ -96,7 +52,7 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    public void setFilteredList(List<GameData> mList) {
+    public void setFilteredList(List<SearchGameData> mList) {
         this.mList = mList;
         notifyDataSetChanged();
     }
@@ -118,7 +74,7 @@ public class GameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        GameData item = mList.get(position);
+        SearchGameData item = mList.get(position);
 
         if (holder instanceof GameTitleViewHolderTypeOne) {
             GameTitleViewHolderTypeOne typeOneHolder = (GameTitleViewHolderTypeOne) holder;
