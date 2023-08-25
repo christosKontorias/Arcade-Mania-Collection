@@ -18,4 +18,10 @@
     <color name="round_back_2">#1645F5</color>
     <color name="round_back_3">#F0F14E</color>
     <color name="round_back_4">#D95F69</color>
+
+    <!-- Create Profile -->
+    <color name="colorPrimary">#E91E63</color>
+    <color name="colorPrimaryDark">#D81B60</color>
+    <color name="colorAccent">#F48FB1</color>
+
 </resources>

@@ -48,29 +48,58 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:src="@drawable/profile_icon"/>
 
-                    <TextView
-                        android:id="@+id/textView"
+                    <!-- Name and Surname Layout -->
+                    <LinearLayout
+                        android:id="@+id/name_surname_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Name &amp; Surname"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView"
-                        app:layout_constraintStart_toStartOf="@+id/imageView"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
+                        <!-- Name TextView -->
+                        <TextView
+                            android:id="@+id/txt_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Name"
+                            android:text="@string/name"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <!-- Spacing between Name and Surname -->
+                        <Space
+                            android:layout_width="5dp"
+                            android:layout_height="1dp" />
+
+                        <!-- Surname TextView -->
+                        <TextView
+                            android:id="@+id/txt_surname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Surname"
+                            android:text="@string/surname"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Email TextView -->
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/txt_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="email@gmail.com"
+                        android:hint="Email"
+                        android:text="@string/email"
                         android:textColor="@color/white"
                         android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="@+id/textView"
-                        app:layout_constraintStart_toStartOf="@+id/textView"
-                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/name_surname_layout" />
 
                     <ImageView
                         android:id="@+id/img_profile"
@@ -98,13 +127,15 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2">
+                        app:layout_constraintTop_toBottomOf="@+id/txt_email">
 
                         <LinearLayout
+                            android:id="@+id/section1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <!-- Games Layout-->
                             <LinearLayout
                                 android:id="@+id/linear_layout_games"
                                 android:layout_width="0dp"
@@ -145,9 +176,9 @@
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
 
-
                             </LinearLayout>
 
+                             <!-- Edit Layout-->
                             <LinearLayout
                                 android:id="@+id/linear_layout_edit"
                                 android:layout_width="0dp"
@@ -191,6 +222,7 @@
 
                             </LinearLayout>
 
+                            <!-- Settings Layout-->
                             <LinearLayout
                                 android:id="@+id/linear_layout_settings"
                                 android:layout_width="0dp"
@@ -233,143 +265,154 @@
 
 
                             </LinearLayout>
+
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/section2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/textView_left1"
-                                android:layout_width="wrap_content"
+                            <!--Password-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Password:"
-                                android:textColor="#182693"
-                                android:textSize="18sp" />
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="24dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/textView_right1"
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/textView_left1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Password:"
+                                    android:textColor="#182693"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/textView_right1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="-"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="#5B5B5B"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="#D9D9D9" />
+
+                            <!--Country-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="-"
-                                android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView_left3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Country:"
+                                    android:textColor="#182693"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/txt_Country"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/country"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="#5B5B5B"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/view2"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="#D9D9D9" />
+
+                            <!--Mobile-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView_left2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Mobile:"
+                                    android:textColor="#182693"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/txt_Mobile"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/mobile"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="#5B5B5B"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/view3"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="#D9D9D9" />
+
+                            <!--Post Code-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView_left4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Post Code:"
+                                    android:textColor="#182693"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/txt_PostCode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/post_code"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="#5B5B5B"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
                         </LinearLayout>
-
-                        <View
-                            android:id="@+id/view"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="6dp"
-                            android:background="#D9D9D9" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView_left2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Mobile:"
-                                android:textColor="#182693"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/textView_right2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="-"
-                                android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/view2"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="6dp"
-                            android:background="#D9D9D9" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView_left3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Country:"
-                                android:textColor="#182693"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/textView_right3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="-"
-                                android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/view3"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="6dp"
-                            android:background="#D9D9D9" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/textView_left4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Post Code:"
-                                android:textColor="#182693"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/textView_right4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="-"
-                                android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -377,16 +420,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="240dp"
+                android:id="@+id/btn_create_profile"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="#c4127a"
-                android:layout_gravity="center_horizontal"
-                android:text="Profile"
-                android:textColor="@color/white"
+                android:layout_margin="16dp"
+                android:text="Create Profile"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>
