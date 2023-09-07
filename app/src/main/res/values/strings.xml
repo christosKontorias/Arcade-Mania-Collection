@@ -9,7 +9,7 @@
     <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="email">E-mail</string>
-    <string name="password">Password</string>
+    <string name="birthday">Date Of Birthday</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="mobile">Mobile</string>
     <string name="country">Country</string>

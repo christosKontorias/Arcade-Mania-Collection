@@ -19,15 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/transparent">
-        
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:queryHint="Search ..."
-            app:iconifiedByDefault="false"
-            app:queryBackground="@color/transparent"/>
-
+            style="@style/AppSearchViewStyle"
+            app:closeIcon="@drawable/baseline_clear_black_24" />
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView

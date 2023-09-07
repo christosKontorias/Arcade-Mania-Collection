@@ -1,20 +1,26 @@
 package com.example.arcademania;
 
-
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.arcademania.databinding.ActivityMainBinding;
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -26,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     private BottomAppBar bottomAppBar;
     private FloatingActionButton floatingActionButton;
+
+    private static final int REQUEST_CREATE_PROFILE = 1;
+    private Dialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 showBottomDialog();
             }
         });
-
     }
     private  void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -81,10 +90,66 @@ public class MainActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_nav_settings);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
-
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        SwitchCompat switch1 = dialog.findViewById(R.id.firstOption);
+        SwitchCompat switch2 = dialog.findViewById(R.id.secondOption);
+        SwitchCompat switch3 = dialog.findViewById(R.id.thirdOption);
+
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showToast("Switch 1 is ON");
+                } else {
+                    showToast("Switch 1 is OFF");
+                }
+            }
+        });
+
+        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showToast("Switch 2 is ON");
+                } else {
+                    showToast("Switch 2 is OFF");
+                }
+            }
+        });
+
+        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showToast("Switch 3 is ON");
+                } else {
+                    showToast("Switch 3 is OFF");
+                }
+            }
+        });
+
+
+        //Check If the user create the account
+        boolean userHasCreatedAccount  = checkIfProfileCreated();
+        TextView profileStatus = dialog.findViewById(R.id.profileStatus);
+
+        profileStatus.setText(userHasCreatedAccount ? "Sign Up" : "Edit Account");
+
+
+        //OnClick ImageView
+        ImageView imageViewAccount = dialog.findViewById(R.id.imageViewAccount);
+        imageViewAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+                startActivity(intent);
+
                 dialog.dismiss();
             }
         });
@@ -97,6 +162,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private boolean checkIfProfileCreated() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // Check the flag indicating whether the user has created an account
+        boolean accountCreated = sharedPreferences.getBoolean("accountCreated", false);
+
+        // Return true if the account has been created, otherwise return false
+        return accountCreated;
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void navigateToCreateProfileActivity(View view) {
+        Intent intent = new Intent(this, CreateProfileActivity.class);
+        startActivity(intent);
+    }
+
+
     //Hide the navigation menu bar in Profile Fragment
     public void hideBottomAppBar() {
         bottomAppBar.setVisibility(View.GONE);
@@ -107,5 +192,4 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar.setVisibility(View.VISIBLE);
         floatingActionButton.setVisibility(View.VISIBLE);
     }
-
 }

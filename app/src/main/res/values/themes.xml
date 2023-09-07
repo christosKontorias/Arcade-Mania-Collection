@@ -37,4 +37,13 @@
         <item name="android:colorForeground">#99FFFFFF</item>
     </style>
 
+    <style name="AppSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="queryHint">Search ...</item>
+        <item name="searchIcon">@drawable/baseline_search_24</item>
+        <item name="iconifiedByDefault">false</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
 </resources>

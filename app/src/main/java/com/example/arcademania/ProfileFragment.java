@@ -3,6 +3,7 @@ package com.example.arcademania;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,14 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+
 public class ProfileFragment extends Fragment{
     private MainActivity parentActivity;
-    private LinearLayout section2Layout;
+    private LinearLayout linearLayoutDetails;
     private Button createProfileButton;
-    private TextView nameTextView, surnameTextView, emailTextView, mobileTextView, countryTextView, postCodeTextView;
+    private ImageView imgProfile;
+    private TextView nameTextView, surnameTextView, emailTextView, birthdayTextView, mobileTextView, countryTextView, postCodeTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,17 +38,20 @@ public class ProfileFragment extends Fragment{
         setupSettingsClickListener(rootView);
         setupCreateProfileButton();
 
+
         return rootView;
     }
 
     private void initializeViews(View rootView) {
+        imgProfile = rootView.findViewById(R.id.imgProfile);
         nameTextView = rootView.findViewById(R.id.txt_name);
         surnameTextView = rootView.findViewById(R.id.txt_surname);
         emailTextView = rootView.findViewById(R.id.txt_email);
+        birthdayTextView = rootView.findViewById(R.id.txt_Birthday);
         mobileTextView = rootView.findViewById(R.id.txt_Mobile);
         countryTextView = rootView.findViewById(R.id.txt_Country);
         postCodeTextView = rootView.findViewById(R.id.txt_PostCode);
-        section2Layout = rootView.findViewById(R.id.section2);
+        linearLayoutDetails = rootView.findViewById(R.id.linearLayoutDetails);
         createProfileButton = rootView.findViewById(R.id.btn_create_profile);
     }
 
@@ -77,7 +86,8 @@ public class ProfileFragment extends Fragment{
             } else {
                 startCreateProfileActivity();
             }
-        });    }
+        });
+    }
 
     private void startCreateProfileActivity() {
         Intent intent = new Intent(getActivity(), CreateProfileActivity.class);
@@ -86,6 +96,9 @@ public class ProfileFragment extends Fragment{
 
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        String imageUriString = sharedPreferences.getString("imageUri", null);
+
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");
@@ -110,9 +123,9 @@ public class ProfileFragment extends Fragment{
         updateProfileData();
         boolean profileCreated = checkIfProfileCreated();
         if (profileCreated) {
-            section2Layout.setVisibility(View.VISIBLE);
+            linearLayoutDetails.setVisibility(View.VISIBLE);
         } else {
-            section2Layout.setVisibility(View.GONE);
+            linearLayoutDetails.setVisibility(View.GONE);
         }
         setupCreateProfileButton();
     }
@@ -130,6 +143,7 @@ public class ProfileFragment extends Fragment{
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");
+        String birthday = sharedPreferences.getString("birthday", "");
         String mobile = sharedPreferences.getString("mobile", "");
         String country = sharedPreferences.getString("country", "");
         String postCode = sharedPreferences.getString("postCode", "");
@@ -137,8 +151,16 @@ public class ProfileFragment extends Fragment{
         nameTextView.setText(name);
         surnameTextView.setText(surname);
         emailTextView.setText(email);
+        birthdayTextView.setText(birthday);
         mobileTextView.setText(mobile);
         countryTextView.setText(country);
         postCodeTextView.setText(postCode);
+
+        // Load and display the profile image using Glide
+        String imageUriString = sharedPreferences.getString("imageUri", null);
+        if (imageUriString != null) {
+            Uri imageUri = Uri.parse(imageUriString);
+            Glide.with(requireContext()).load(imageUri).into(imgProfile);
+        }
     }
 }
