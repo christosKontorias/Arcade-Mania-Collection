@@ -1,12 +1,15 @@
 package com.example.arcademania;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -139,8 +143,7 @@ public class MainActivity extends AppCompatActivity {
         boolean userHasCreatedAccount  = checkIfProfileCreated();
         TextView profileStatus = dialog.findViewById(R.id.profileStatus);
 
-        profileStatus.setText(userHasCreatedAccount ? "Sign Up" : "Edit Account");
-
+        profileStatus.setText(userHasCreatedAccount ? "Edit Account" : "Sign Up");
 
         //OnClick ImageView
         ImageView imageViewAccount = dialog.findViewById(R.id.imageViewAccount);
@@ -154,6 +157,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        ImageView deleteAccountButton = dialog.findViewById(R.id.deleteProfileImgView);
+        deleteAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Show the delete confirmation dialog
+                showDeleteConfirmationDialog(dialog);
+            }
+        });
+
+
+
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -162,15 +177,92 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showDeleteConfirmationDialog(final Dialog parentDialog) {
+        boolean isAccountCreated = checkIfProfileCreated();
+
+        if (!isAccountCreated) {
+            // If there is no account created, show a message
+            showToast("There is no account to delete.");
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Delete Account Confirmation");
+            builder.setMessage("Are you sure you want to delete your account?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Assuming the account is successfully deleted
+                    boolean isAccountDeleted = deleteAccount();
+
+                    if (isAccountDeleted) {
+                        // If the account is deleted, update the profile status
+                        TextView profileStatus = parentDialog.findViewById(R.id.profileStatus);
+                        profileStatus.setText("Sign Up");
+
+                        // Dismiss the parent dialog
+                        parentDialog.dismiss();
+
+                        // Show a confirmation toast message
+                        showToast("Account deleted successfully!");
+                    } else {
+                        // If deletion fails, you can show an error message or handle it accordingly
+                        showToast("Failed to delete the account. Please try again.");
+                    }
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // User clicked "No," do nothing
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
+
+    private boolean deleteAccount() {
+        // Clear user-related data in SharedPreferences
+        clearSharedPreferences();
+
+        // Return to the initial screen (e.g., login or registration)
+        navigateToInitialScreen();
+
+        return true;
+    }
+
+    // Clear user-related data in SharedPreferences
+    private void clearSharedPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
+    // Navigate to the initial screen (e.g., login or registration)
+    private void navigateToInitialScreen() {
+        // Replace the current fragment with the initial fragment (e.g., LoginFragment)
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, new ProfileFragment()); // Replace "LoginFragment" with your initial fragment class
+        transaction.addToBackStack(null); // Optional: Add to the back stack for navigation
+        transaction.commit();
+    }
+
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // Check the flag indicating whether the user has created an account
+        // Check if the "accountCreated" flag is true
         boolean accountCreated = sharedPreferences.getBoolean("accountCreated", false);
 
-        // Return true if the account has been created, otherwise return false
-        return accountCreated;
+        // Check if essential profile data exists
+        String name = sharedPreferences.getString("name", "");
+        String surname = sharedPreferences.getString("surname", "");
+        String email = sharedPreferences.getString("email", "");
+
+        // Return true if the account has been created and essential profile data exists, otherwise return false
+        return accountCreated && !name.isEmpty() && !surname.isEmpty() && !email.isEmpty();
     }
+
 
     private void showToast(String message) {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
