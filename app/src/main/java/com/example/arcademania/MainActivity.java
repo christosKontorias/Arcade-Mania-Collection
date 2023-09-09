@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
         profileStatus.setText(userHasCreatedAccount ? "Edit Account" : "Sign Up");
 
-        //OnClick ImageView
         ImageView imageViewAccount = dialog.findViewById(R.id.imageViewAccount);
         imageViewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         ImageView deleteAccountButton = dialog.findViewById(R.id.deleteProfileImgView);
         deleteAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,21 +165,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-
     }
 
     private void showDeleteConfirmationDialog(final Dialog parentDialog) {
         boolean isAccountCreated = checkIfProfileCreated();
 
         if (!isAccountCreated) {
-            // If there is no account created, show a message
             showToast("There is no account to delete.");
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -190,21 +184,13 @@ public class MainActivity extends AppCompatActivity {
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    // Assuming the account is successfully deleted
                     boolean isAccountDeleted = deleteAccount();
-
                     if (isAccountDeleted) {
-                        // If the account is deleted, update the profile status
                         TextView profileStatus = parentDialog.findViewById(R.id.profileStatus);
                         profileStatus.setText("Sign Up");
-
-                        // Dismiss the parent dialog
                         parentDialog.dismiss();
-
-                        // Show a confirmation toast message
                         showToast("Account deleted successfully!");
                     } else {
-                        // If deletion fails, you can show an error message or handle it accordingly
                         showToast("Failed to delete the account. Please try again.");
                     }
                 }
@@ -215,23 +201,17 @@ public class MainActivity extends AppCompatActivity {
                     // User clicked "No," do nothing
                 }
             });
-
             AlertDialog dialog = builder.create();
             dialog.show();
         }
     }
 
     private boolean deleteAccount() {
-        // Clear user-related data in SharedPreferences
         clearSharedPreferences();
-
-        // Return to the initial screen (e.g., login or registration)
         navigateToInitialScreen();
-
         return true;
     }
 
-    // Clear user-related data in SharedPreferences
     private void clearSharedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -239,30 +219,23 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    // Navigate to the initial screen (e.g., login or registration)
     private void navigateToInitialScreen() {
-        // Replace the current fragment with the initial fragment (e.g., LoginFragment)
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, new ProfileFragment()); // Replace "LoginFragment" with your initial fragment class
-        transaction.addToBackStack(null); // Optional: Add to the back stack for navigation
+        transaction.replace(R.id.frame_layout, new ProfileFragment());
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        // Check if the "accountCreated" flag is true
         boolean accountCreated = sharedPreferences.getBoolean("accountCreated", false);
 
-        // Check if essential profile data exists
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");
 
-        // Return true if the account has been created and essential profile data exists, otherwise return false
         return accountCreated && !name.isEmpty() && !surname.isEmpty() && !email.isEmpty();
     }
-
 
     private void showToast(String message) {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -273,8 +246,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    //Hide the navigation menu bar in Profile Fragment
     public void hideBottomAppBar() {
         bottomAppBar.setVisibility(View.GONE);
         floatingActionButton.setVisibility(View.GONE);
