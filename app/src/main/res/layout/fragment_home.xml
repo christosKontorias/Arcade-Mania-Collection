@@ -35,15 +35,31 @@
             android:textStyle="bold" />
 
         <!-- App Description -->
-        <TextView
-            android:id="@+id/appDescription"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/appTitle"
             android:layout_centerHorizontal="true"
-            android:text="SubTitle...."
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:orientation="horizontal">
 
+            <!-- App Description (Welcome) -->
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <!-- User TextView -->
+            <TextView
+                android:id="@+id/userSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
     </RelativeLayout>
 </FrameLayout>

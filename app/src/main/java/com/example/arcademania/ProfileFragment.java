@@ -34,6 +34,7 @@ public class ProfileFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
         initializeViews(rootView);
+        setupHomeClickListener(rootView);
         setupGameListClickListener(rootView);
         setupSettingsClickListener(rootView);
         setupCreateProfileButton();
@@ -53,6 +54,18 @@ public class ProfileFragment extends Fragment{
         postCodeTextView = rootView.findViewById(R.id.txt_PostCode);
         linearLayoutDetails = rootView.findViewById(R.id.linearLayoutDetails);
         createProfileButton = rootView.findViewById(R.id.btn_create_profile);
+    }
+
+    private void setupHomeClickListener(View rootView) {
+        LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_home);
+        linearLayoutMenu.setOnClickListener(v -> replaceWithHomeFragment());
+    }
+
+    private void replaceWithHomeFragment() {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, new HomeFragment());
+        fragmentTransaction.commit();
     }
 
     private void setupGameListClickListener(View rootView) {
@@ -98,7 +111,6 @@ public class ProfileFragment extends Fragment{
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         String imageUriString = sharedPreferences.getString("imageUri", null);
-
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");

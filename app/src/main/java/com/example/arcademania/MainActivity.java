@@ -30,7 +30,6 @@ import com.example.arcademania.databinding.ActivityMainBinding;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     FloatingActionButton fab;
@@ -50,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new HomeFragment());
 
         bottomAppBar = findViewById(R.id.bottomAppBar);
+
         floatingActionButton = findViewById(R.id.fab);
 
         fab = findViewById(R.id.fab);
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
                 case R.id.home:
                     replaceFragment(new HomeFragment());
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new ProfileFragment());
                     break;
             }
-
             return true;
         });
 
@@ -81,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private  void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -115,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -126,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -137,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         //Check If the user create the account
         boolean userHasCreatedAccount  = checkIfProfileCreated();
@@ -255,4 +251,5 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar.setVisibility(View.VISIBLE);
         floatingActionButton.setVisibility(View.VISIBLE);
     }
+
 }

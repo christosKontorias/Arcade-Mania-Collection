@@ -40,8 +40,8 @@
 
                     <ImageView
                         android:id="@+id/imgProfile"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_marginTop="25dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/profile_icon"
@@ -54,8 +54,8 @@
                         android:id="@+id/name_surname_layout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imgProfile">
@@ -71,16 +71,13 @@
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
-                        <!-- Spacing between Name and Surname -->
-                        <Space
-                            android:layout_width="8dp"
-                            android:layout_height="1dp" />
-
                         <!-- Surname TextView -->
                         <TextView
                             android:id="@+id/txt_surname"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+
                             android:hint="Surname"
                             android:text="@string/surname"
                             android:textColor="@color/white"
@@ -138,6 +135,50 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <!-- Home Layout-->
+                            <LinearLayout
+                                android:id="@+id/linear_layout_home"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_weight="0.333"
+                                android:background="@drawable/layout_icons_brackground_profile"
+                                android:elevation="5dp"
+                                android:orientation="vertical">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_margin="12dp"
+                                    android:background="@drawable/layout_icons_profile">
+
+                                    <ImageView
+                                        android:id="@+id/img_title1"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:src="@drawable/baseline_home_24"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <TextView
+                                    android:id="@+id/txt_title1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="8dp"
+                                    android:text="Home"
+                                    android:textAlignment="center"
+                                    android:textColor="#000000"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
                             <!-- Games Layout-->
                             <LinearLayout
                                 android:id="@+id/linear_layout_games"
@@ -178,50 +219,6 @@
                                     android:textColor="#000000"
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
-
-                            </LinearLayout>
-
-                            <!-- Edit Layout-->
-                            <LinearLayout
-                                android:id="@+id/linear_layout_edit"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.333"
-                                android:background="@drawable/layout_icons_brackground_profile"
-                                android:elevation="5dp"
-                                android:orientation="vertical">
-
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_margin="12dp"
-                                    android:background="@drawable/layout_icons_profile">
-
-                                    <ImageView
-                                        android:id="@+id/img_title1"
-                                        android:layout_width="40dp"
-                                        android:layout_height="40dp"
-                                        android:src="@drawable/baseline_edit_24"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                <TextView
-                                    android:id="@+id/txt_title1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp"
-                                    android:text="Edit"
-                                    android:textAlignment="center"
-                                    android:textColor="#000000"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold" />
-
 
                             </LinearLayout>
 
