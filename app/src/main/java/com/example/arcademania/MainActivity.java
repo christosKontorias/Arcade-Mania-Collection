@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
 
     private static final int REQUEST_CREATE_PROFILE = 1;
-    private Dialog dialog;
 
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,40 +100,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SwitchCompat switch1 = dialog.findViewById(R.id.firstOption);
-        SwitchCompat switch2 = dialog.findViewById(R.id.secondOption);
-        SwitchCompat switch3 = dialog.findViewById(R.id.thirdOption);
+        setupSwitchListeners(dialog);
 
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    showToast("Switch 1 is ON");
-                } else {
-                    showToast("Switch 1 is OFF");
-                }
-            }
-        });
-        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    showToast("Switch 2 is ON");
-                } else {
-                    showToast("Switch 2 is OFF");
-                }
-            }
-        });
-        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    showToast("Switch 3 is ON");
-                } else {
-                    showToast("Switch 3 is OFF");
-                }
-            }
-        });
 
         //Check If the user create the account
         boolean userHasCreatedAccount  = checkIfProfileCreated();
@@ -167,6 +135,67 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
+
+
+    private void setupSwitchListeners(Dialog dialog) {
+        SwitchCompat switch1 = dialog.findViewById(R.id.firstOption);
+        SwitchCompat switch2 = dialog.findViewById(R.id.secondOption);
+        SwitchCompat switch3 = dialog.findViewById(R.id.thirdOption);
+
+        // Load the switch states from SharedPreferences and set them
+        SharedPreferences sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
+        switch1.setChecked(sharedPreferences.getBoolean("Switch1", false));
+        switch2.setChecked(sharedPreferences.getBoolean("Switch2", false));
+        switch3.setChecked(sharedPreferences.getBoolean("Switch3", false));
+
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showToast("Switch 1 is ON");
+                } else {
+                    showToast("Switch 1 is OFF");
+                }
+                // Save the state of Switch 1
+                saveSwitchState("Switch1", isChecked);
+            }
+        });
+
+        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showToast("Switch 2 is ON");
+                } else {
+                    showToast("Switch 2 is OFF");
+                }
+                // Save the state of Switch 2
+                saveSwitchState("Switch2", isChecked);
+            }
+        });
+
+        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showToast("Switch 3 is ON");
+                } else {
+                    showToast("Switch 3 is OFF");
+                }
+                // Save the state of Switch 3
+                saveSwitchState("Switch3", isChecked);
+            }
+        });
+    }
+
+
+    private void saveSwitchState(String switchKey, boolean isChecked) {
+        SharedPreferences sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(switchKey, isChecked);
+        editor.apply();
+    }
+
 
     private void showDeleteConfirmationDialog(final Dialog parentDialog) {
         boolean isAccountCreated = checkIfProfileCreated();
@@ -251,5 +280,4 @@ public class MainActivity extends AppCompatActivity {
         bottomAppBar.setVisibility(View.VISIBLE);
         floatingActionButton.setVisibility(View.VISIBLE);
     }
-
 }
