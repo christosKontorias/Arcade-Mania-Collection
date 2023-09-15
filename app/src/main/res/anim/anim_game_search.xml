@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Animation 1 Slide Left To Right-->
+    <!--<alpha android:fromAlpha="0"
+        android:toAlpha="1"
+        android:duration="600"/>
+
+    <translate android:fromXDelta="-100%"
+        android:toXDelta="0%"
+        android:duration="600"/>-->
+
+    <!-- Animation 2 Slide Top To Bottom-->
+    <!--<alpha android:fromAlpha="0"
+          android:toAlpha="1"
+          android:duration="600"/>
+
+      <translate android:fromXDelta="-200%"
+          android:toXDelta="0%"
+          android:duration="600"/>-->
+
+    <!-- Animation 3 Left To Right with Pivot-->
+    <!--<alpha android:fromAlpha="0"
+          android:toAlpha="1"
+          android:duration="600"/>
+
+      <translate android:fromDegrees="-15"
+          android:toDegrees="0"
+          android:pivotX="0%"
+          android:pivotY="100%"
+          android:duration="600"/>-->
+
+    <!-- Animation 4 -->
+    <alpha android:fromAlpha="0"
+        android:toAlpha="1"
+        android:duration="600"/>
+
+    <translate android:fromXScale="0"
+        android:fromYScale="0"
+        android:toXScale="1"
+        android:toYScale="1"
+        android:duration="600"/>
+
+</set>

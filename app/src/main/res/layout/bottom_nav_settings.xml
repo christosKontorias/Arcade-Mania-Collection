@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialogbg">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_remove_24"
+        android:layout_gravity="center|top"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/settingsTextView"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Settings"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/cancelButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_clear_24"/>
+    </RelativeLayout>
+    </LinearLayout>
+    <!--  Section 1 -->
+    <LinearLayout
+        android:background="@drawable/round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!-- 1 Option Changed-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/darkMenuIcon"
+                android:src="@drawable/baseline_dark_mode_24"
+                android:background="@drawable/round_back_1"
+                android:padding="12dp"/>
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Dark Menu"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/darkMenuIcon"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/firstOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchMinWidth="50dp"
+                android:theme="@style/option1Switch"/>
+        </RelativeLayout>
+
+        <!-- 2 Option Changed-->
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/musicIcon"
+                android:src="@drawable/baseline_music_note_24"
+                android:background="@drawable/round_back_2"
+                android:padding="12dp"/>
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Background Music"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/musicIcon"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/secondOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchMinWidth="50dp"
+                android:theme="@style/option2Switch"/>
+        </RelativeLayout>
+
+        <!-- 3 Option Changed-->
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/privateAccountIcon"
+                android:src="@drawable/baseline_security_24"
+                android:background="@drawable/round_back_3"
+                android:padding="12dp"/>
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Private Account"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/privateAccountIcon"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/thirdOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:switchMinWidth="50dp"
+                android:theme="@style/option3Switch"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <!--  Section 2 -->
+    <LinearLayout
+        android:background="@drawable/round_back_white10_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <!-- 1 Option Changed-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/accountIcon"
+                android:src="@drawable/baseline_person_white_24"
+                android:background="@drawable/round_back_4"
+                android:padding="12dp"/>
+            <TextView
+                android:id="@+id/profileStatus"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Sign Up"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/accountIcon"/>
+
+            <ImageView
+                android:id="@+id/imageViewAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <!-- 2 Option Changed-->
+        <RelativeLayout
+            android:id="@+id/deleteAccountLayout"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/deleteAccountIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_delete_forever_24"
+                android:background="@drawable/round_back_1"
+                android:padding="12dp"/>
+            <TextView
+                android:id="@+id/deleteAccountTextView"
+                android:layout_marginStart="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Delete Account"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/deleteAccountIcon"/>
+
+            <ImageView
+                android:id="@+id/deleteProfileImgView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_keyboard_arrow_right_24"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <!--  Section 3 -->
+
+
+</LinearLayout>
