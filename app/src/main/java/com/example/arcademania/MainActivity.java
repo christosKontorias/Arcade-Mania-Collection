@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity{
 
         //final Dialog dialog = new Dialog(this);
 
-        dialog = new Dialog(this); // Change dialog to a class-level variable
+        dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_nav_settings);
 
