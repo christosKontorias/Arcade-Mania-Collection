@@ -30,9 +30,6 @@ import com.example.arcademania.databinding.ActivityMainBinding;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.lang.ref.WeakReference;
-
-
 public class MainActivity extends AppCompatActivity{
     ActivityMainBinding binding;
     FloatingActionButton fab;
@@ -186,8 +183,6 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-
-        //No .mp3 file Git
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -202,6 +197,7 @@ public class MainActivity extends AppCompatActivity{
                 saveSwitchState("Switch2", isChecked);
             }
         });
+
         switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -225,12 +221,14 @@ public class MainActivity extends AppCompatActivity{
         editor.putBoolean("Switch3", isChecked);
         editor.apply();
     }
+
     private void saveSwitchState(String switchKey, boolean isChecked) {
         SharedPreferences sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(switchKey, isChecked);
         editor.apply();
     }
+
     private void showDeleteConfirmationDialog(final Dialog parentDialog) {
         boolean isAccountCreated = checkIfProfileCreated();
 
@@ -264,23 +262,27 @@ public class MainActivity extends AppCompatActivity{
             dialog.show();
         }
     }
+
     private boolean deleteAccount() {
         clearSharedPreferences();
         navigateToInitialScreen();
         return true;
     }
+
     private void clearSharedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
     }
+
     private void navigateToInitialScreen() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, new ProfileFragment());
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean accountCreated = sharedPreferences.getBoolean("accountCreated", false);
@@ -291,31 +293,36 @@ public class MainActivity extends AppCompatActivity{
 
         return accountCreated && !name.isEmpty() && !surname.isEmpty() && !email.isEmpty();
     }
+
     private void showToast(String message) {
         Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
     }
+
     public void hideBottomAppBar() {
         bottomAppBar.setVisibility(View.GONE);
         floatingActionButton.setVisibility(View.GONE);
     }
+
     public void showBottomAppBar() {
         bottomAppBar.setVisibility(View.VISIBLE);
         floatingActionButton.setVisibility(View.VISIBLE);
     }
+
     private void startBackgroundMusic() {
         if (backgroundMusicPlayer != null && !backgroundMusicPlayer.isPlaying()) {
             backgroundMusicPlayer.start();
         }
     }
+
     private void stopBackgroundMusic() {
         if (backgroundMusicPlayer != null && backgroundMusicPlayer.isPlaying()) {
             backgroundMusicPlayer.pause();
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         // Dismiss the dialog if it's showing to prevent window leak
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
@@ -327,5 +334,4 @@ public class MainActivity extends AppCompatActivity{
             backgroundMusicPlayer = null;
         }
     }
-
 }
