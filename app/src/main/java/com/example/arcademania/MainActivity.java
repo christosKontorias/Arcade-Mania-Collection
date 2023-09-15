@@ -188,12 +188,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void saveSwitchState(String switchKey, boolean isChecked) {
         SharedPreferences sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(switchKey, isChecked);
         editor.apply();
     }
+
 
     private void showDeleteConfirmationDialog(final Dialog parentDialog) {
         boolean isAccountCreated = checkIfProfileCreated();
