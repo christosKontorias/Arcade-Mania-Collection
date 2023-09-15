@@ -296,7 +296,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#c4127a"
-                        android:text="Back To Profile"
+                        android:text="Back"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp" />
                 </LinearLayout>

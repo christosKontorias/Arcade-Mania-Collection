@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,11 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 
 
@@ -56,41 +53,35 @@ public class ProfileFragment extends Fragment{
         linearLayoutDetails = rootView.findViewById(R.id.linearLayoutDetails);
         createProfileButton = rootView.findViewById(R.id.btn_create_profile);
     }
-
     private void setupHomeClickListener(View rootView) {
         LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_home);
-        linearLayoutMenu.setOnClickListener(v -> replaceWithHomeFragment());
+        linearLayoutMenu.setOnClickListener(v -> { replaceWithHomeFragment(new HomeFragment());
+        });
     }
-
-    private void replaceWithHomeFragment() {
+    private void replaceWithHomeFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, new HomeFragment());
+        fragmentTransaction.replace(R.id.frame_layout, fragment, "HomeFragment");
         fragmentTransaction.commit();
     }
-
     private void setupGameListClickListener(View rootView) {
         LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_games);
         linearLayoutMenu.setOnClickListener(v -> replaceWithSearchFragment());
     }
-
     private void replaceWithSearchFragment() {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, new SearchFragment());
+        fragmentTransaction.replace(R.id.frame_layout, new SearchFragment(), "SearchFragment");
         fragmentTransaction.commit();
     }
-
     private void setupSettingsClickListener(View rootView) {
         LinearLayout linearLayoutSettings = rootView.findViewById(R.id.linear_layout_settings);
         linearLayoutSettings.setOnClickListener(v -> startSettingsProfileActivity());
     }
-
     private void startSettingsProfileActivity() {
         Intent intent = new Intent(getActivity(), SettingsProfileActivity.class);
         startActivity(intent);
     }
-
     private void setupCreateProfileButton() {
         boolean profileCreated = checkIfProfileCreated();
         createProfileButton.setText(profileCreated ? "Edit Profile" : "Create Profile");
@@ -102,12 +93,10 @@ public class ProfileFragment extends Fragment{
             }
         });
     }
-
     private void startCreateProfileActivity() {
         Intent intent = new Intent(getActivity(), CreateProfileActivity.class);
         startActivity(intent);
     }
-
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
@@ -117,7 +106,6 @@ public class ProfileFragment extends Fragment{
         String email = sharedPreferences.getString("email", "");
         return !name.isEmpty() && !surname.isEmpty() && !email.isEmpty();
     }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -125,7 +113,6 @@ public class ProfileFragment extends Fragment{
             parentActivity = (MainActivity) context;
         }
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -143,7 +130,6 @@ public class ProfileFragment extends Fragment{
         }
         setupCreateProfileButton();
     }
-
     @Override
     public void onPause() {
         super.onPause();
@@ -151,9 +137,16 @@ public class ProfileFragment extends Fragment{
             parentActivity.showBottomAppBar();
         }
     }
-
     public void updateProfileData() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        // Obtain the Context from the parent activity
+        Context context = getActivity();
+
+        if (context == null) {
+            // Handle the case where the fragment is not attached to an activity
+            return;
+        }
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");
@@ -162,13 +155,29 @@ public class ProfileFragment extends Fragment{
         String country = sharedPreferences.getString("country", "");
         String postCode = sharedPreferences.getString("postCode", "");
 
-        nameTextView.setText(name);
-        surnameTextView.setText(surname);
-        emailTextView.setText(email);
-        birthdayTextView.setText(birthday);
-        mobileTextView.setText(mobile);
-        countryTextView.setText(country);
-        postCodeTextView.setText(postCode);
+        // Read the state of Switch 3 from SharedPreferences
+        SharedPreferences switchSharedPreferences = context.getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
+        boolean switch3State = switchSharedPreferences.getBoolean("Switch3", false);
+
+        if (!switch3State) {
+            // Display the information normally
+            nameTextView.setText(name);
+            surnameTextView.setText(surname);
+            emailTextView.setText(email);
+            birthdayTextView.setText(birthday);
+            mobileTextView.setText(mobile);
+            countryTextView.setText(country);
+            postCodeTextView.setText(postCode);
+        } else {
+            // Display the information with asterisks for sensitive fields
+            nameTextView.setText(getAsteriskText(name));
+            surnameTextView.setText(getAsteriskText(surname));
+            emailTextView.setText(getAsteriskText(email));
+            birthdayTextView.setText(getAsteriskText(birthday));
+            mobileTextView.setText(getAsteriskText(mobile));
+            countryTextView.setText(getAsteriskText(country));
+            postCodeTextView.setText(getAsteriskText(postCode));
+        }
 
         // Load and display the profile image using Glide
         String imageUriString = sharedPreferences.getString("imageUri", null);
@@ -176,5 +185,9 @@ public class ProfileFragment extends Fragment{
             Uri imageUri = Uri.parse(imageUriString);
             Glide.with(requireContext()).load(imageUri).into(imgProfile);
         }
+    }
+    private String getAsteriskText(String text) {
+        // Replace the characters in the text with asterisks
+        return text.replaceAll(".", "*");
     }
 }

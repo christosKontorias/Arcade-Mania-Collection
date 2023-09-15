@@ -11,6 +11,8 @@ public class SettingsProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_settings_profile);
 
         Button button = findViewById(R.id.btn_back);
