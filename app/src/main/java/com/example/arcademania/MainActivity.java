@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity{
 
         bottomAppBar = findViewById(R.id.bottomAppBar);
 
-        //backgroundMusicPlayer = MediaPlayer.create(this, R.raw.background_music);
+        backgroundMusicPlayer = MediaPlayer.create(this, R.raw.background_music);
 
         floatingActionButton = findViewById(R.id.fab);
 
