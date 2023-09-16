@@ -18,19 +18,20 @@ import java.util.ArrayList;
 
 
 public class GamesActivity extends Fragment {
-    private RecyclerView recyclerView;
-    private ArrayList<ActivityGameData> gameList = new ArrayList<>();
-    private ActivityGameAdapter gameAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_games, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        addDataToList();
-        gameAdapter = new ActivityGameAdapter(gameList);
+
+        // Create and populate gameList as a local variable
+        ArrayList<ActivityGameData> gameList = new ArrayList<>();
+        addDataToList(gameList);
+
+        ActivityGameAdapter gameAdapter = new ActivityGameAdapter(gameList);
         recyclerView.setAdapter(gameAdapter);
 
         // Set up a grid layout with two columns
@@ -41,13 +42,16 @@ public class GamesActivity extends Fragment {
         // Calculate the number of games
         int gameCount = gameList.size();
 
-        // Update the game count TextView
+     // Update the game count TextView with the string resource
+        String gameCountText = getResources().getString(R.string.game_count_format, gameCount);
         TextView gameCountTextView = rootView.findViewById(R.id.txt_CountGames);
-        gameCountTextView.setText(gameCount + " Games");
+        gameCountTextView.setText(gameCountText);
+
+
         return rootView;
     }
 
-    private void addDataToList() {
+    private void addDataToList(ArrayList<ActivityGameData> gameList) {
         gameList.add(new ActivityGameData(R.drawable.pac_man_logo, "PacMan"));
         gameList.add(new ActivityGameData(R.drawable.space_invaders_logo, "Space Invaders"));
         gameList.add(new ActivityGameData(R.drawable.galaga_logo, "Galaga"));

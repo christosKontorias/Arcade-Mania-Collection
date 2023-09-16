@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -22,7 +19,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +36,9 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
@@ -50,22 +48,19 @@ public class MainActivity extends AppCompatActivity{
 
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.games:
-                    replaceFragment(new GamesActivity());
-                    break;
-                case R.id.search:
-                    replaceFragment(new SearchFragment());
-                    break;
-                case R.id.profile:
-                    replaceFragment(new ProfileFragment());
-                    break;
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                replaceFragment(new HomeFragment());
+            } else if (itemId == R.id.games) {
+                replaceFragment(new GamesActivity());
+            } else if (itemId == R.id.search) {
+                replaceFragment(new SearchFragment());
+            } else if (itemId == R.id.profile) {
+                replaceFragment(new ProfileFragment());
             }
             return true;
         });
+
 
         binding.fab.setOnClickListener(view -> showBottomDialog());
     }
@@ -169,7 +164,7 @@ public class MainActivity extends AppCompatActivity{
                 boolean isAccountDeleted = deleteAccount();
                 if (isAccountDeleted) {
                     TextView profileStatus = dialog.findViewById(R.id.profileStatus);
-                    profileStatus.setText("Sign Up");
+                    profileStatus.setText(R.string.signUp);
                     dialog.dismiss();
                     showToast("Account deleted successfully!");
                 } else {

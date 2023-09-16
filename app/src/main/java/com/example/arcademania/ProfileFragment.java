@@ -56,8 +56,7 @@ public class ProfileFragment extends Fragment{
 
     private void setupHomeClickListener(View rootView) {
         LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_home);
-        linearLayoutMenu.setOnClickListener(v -> { replaceWithHomeFragment(new HomeFragment());
-        });
+        linearLayoutMenu.setOnClickListener(v -> replaceWithHomeFragment(new HomeFragment()));
     }
 
     private void replaceWithHomeFragment(Fragment fragment) {
@@ -109,7 +108,6 @@ public class ProfileFragment extends Fragment{
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
-        String imageUriString = sharedPreferences.getString("imageUri", null);
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");

@@ -17,9 +17,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class SearchFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private SearchView searchView;
-    private ArrayList<SearchGameData> mList = new ArrayList<>();
+    private ArrayList<SearchGameData> mList;
     private SearchGameAdapter adapter;
 
     @Nullable
@@ -28,11 +26,12 @@ public class SearchFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 
-        recyclerView = rootView.findViewById(R.id.recyclerView);
-        searchView = rootView.findViewById(R.id.searchView);
+        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView); // Declare recyclerView as a local variable
+        SearchView searchView = rootView.findViewById(R.id.searchView); // Declare searchView as a local variable
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mList = new ArrayList<>(); // Initialize mList
         addDataToList();
         adapter = new SearchGameAdapter(mList);
         recyclerView.setAdapter(adapter);

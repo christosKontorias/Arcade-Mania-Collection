@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,7 +25,9 @@ public class CreateProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_create_profile);
 
         uploadImageView = findViewById(R.id.uploadImage);
@@ -40,7 +43,13 @@ public class CreateProfileActivity extends AppCompatActivity {
         editTextPostCode = findViewById(R.id.editTextPostCode);
 
         Button submitButton = findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(v -> submitForm());
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitForm();
+            }
+        });
+
     }
 
     private void openImagePicker() {
@@ -81,6 +90,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         if (selectedImageUri != null) {
             editor.putString("imageUri", selectedImageUri.toString());
+            editor.apply();
         }
 
         editor.putBoolean("accountCreated", true); // Set the flag to true

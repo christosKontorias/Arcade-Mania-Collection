@@ -48,7 +48,8 @@
                         android:src="@drawable/profile_icon"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/profile_image" />
 
                     <!-- Name and Surname Layout -->
                     <LinearLayout
@@ -66,7 +67,7 @@
                             android:id="@+id/txt_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="Name"
+                            android:hint="@string/name"
                             android:text="@string/name"
                             android:textColor="@color/white"
                             android:textSize="20sp"
@@ -79,7 +80,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
 
-                            android:hint="Surname"
+                            android:hint="@string/surname"
                             android:text="@string/surname"
                             android:textColor="@color/white"
                             android:textSize="20sp"
@@ -93,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:hint="Email"
+                        android:hint="@string/email"
                         android:text="@string/email"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -110,7 +111,8 @@
                         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/background_image_bubbles" />
 
                     <!--Options-->
                     <LinearLayout
@@ -134,7 +136,8 @@
                             android:id="@+id/section1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
 
                             <!-- Home Layout-->
                             <LinearLayout
@@ -143,9 +146,9 @@
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
                                 android:layout_weight="0.333"
-                                android:background="@drawable/layout_icons_brackground_profile"
                                 android:elevation="5dp"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:background="@drawable/layout_icons_background_profile">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="60dp"
@@ -162,7 +165,8 @@
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        android:contentDescription="@string/home"/>
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -171,7 +175,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="8dp"
-                                    android:text="Home"
+                                    android:text="@string/home"
                                     android:textAlignment="center"
                                     android:textColor="#000000"
                                     android:textSize="13sp"
@@ -187,7 +191,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
                                 android:layout_weight="0.333"
-                                android:background="@drawable/layout_icons_brackground_profile"
+                                android:background="@drawable/layout_icons_background_profile"
                                 android:elevation="5dp"
                                 android:orientation="vertical">
 
@@ -206,7 +210,8 @@
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        android:contentDescription="@string/games" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -215,7 +220,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="8dp"
-                                    android:text="Games"
+                                    android:text="@string/games"
                                     android:textAlignment="center"
                                     android:textColor="#000000"
                                     android:textSize="13sp"
@@ -230,7 +235,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_margin="10dp"
                                 android:layout_weight="0.333"
-                                android:background="@drawable/layout_icons_brackground_profile"
+                                android:background="@drawable/layout_icons_background_profile"
                                 android:elevation="5dp"
                                 android:orientation="vertical">
 
@@ -249,7 +254,8 @@
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        android:contentDescription="@string/settings_title" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -258,17 +264,14 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="8dp"
-                                    android:text="Settings"
+                                    android:text="@string/settings_title"
                                     android:textAlignment="center"
                                     android:textColor="#000000"
                                     android:textSize="13sp"
                                     android:textStyle="bold" />
 
-
                             </LinearLayout>
-
                         </LinearLayout>
-
                     </LinearLayout>
                     <!--Details-->
                     <LinearLayout
@@ -308,7 +311,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Birthday:"
+                                    android:text="@string/birthday_title1"
                                     android:textColor="#182693"
                                     android:textSize="18sp" />
 
@@ -317,7 +320,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="@string/birthday"
+                                    android:text="@string/birthday_title2"
                                     android:textAlignment="center"
                                     android:textColor="#5B5B5B"
                                     android:textSize="16sp" />
@@ -344,7 +347,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Country:"
+                                    android:text="@string/country_title1"
                                     android:textColor="#182693"
                                     android:textSize="18sp" />
 
@@ -353,7 +356,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="@string/country"
+                                    android:text="@string/country_title2"
                                     android:textAlignment="center"
                                     android:textColor="#5B5B5B"
                                     android:textSize="16sp" />
@@ -380,7 +383,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Mobile:"
+                                    android:text="@string/mobile_title1"
                                     android:textColor="#182693"
                                     android:textSize="18sp" />
 
@@ -389,7 +392,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="@string/mobile"
+                                    android:text="@string/mobile_title2"
                                     android:textAlignment="center"
                                     android:textColor="#5B5B5B"
                                     android:textSize="16sp" />
@@ -417,7 +420,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Post Code:"
+                                    android:text="@string/post_code_title1"
                                     android:textColor="#182693"
                                     android:textSize="18sp" />
 
@@ -426,17 +429,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="@string/post_code"
+                                    android:text="@string/post_code_title2"
                                     android:textAlignment="center"
                                     android:textColor="#5B5B5B"
                                     android:textSize="16sp" />
                             </LinearLayout>
                         </LinearLayout>
-
                      </LinearLayout>
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -445,11 +445,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_profile_button"
                 android:layout_marginTop="25dp"
-                android:text="Create Profile"
+                android:text="@string/create_profile"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:layout_gravity="center_horizontal" />
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

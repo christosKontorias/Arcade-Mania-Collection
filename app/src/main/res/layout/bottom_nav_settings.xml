@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +12,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_remove_24"
         android:layout_gravity="center|top"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/remove_icon" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,26 +22,31 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="25dp"
         android:orientation="horizontal">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
         <TextView
             android:id="@+id/settingsTextView"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Settings"
-            android:textSize="25dp"
+            android:text="@string/settings_title"
+            android:textSize="25sp"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/cancelButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/baseline_clear_24"/>
+            android:src="@drawable/baseline_clear_24"
+            android:contentDescription="@string/cancel_button" />
     </RelativeLayout>
     </LinearLayout>
     <!--  Section 1 -->
@@ -64,16 +71,20 @@
                 android:id="@+id/darkMenuIcon"
                 android:src="@drawable/baseline_dark_mode_24"
                 android:background="@drawable/round_back_1"
-                android:padding="12dp"/>
+                android:padding="12dp"
+                android:contentDescription="@string/dark_menu_title" />
+
             <TextView
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Dark Menu"
+                android:text="@string/dark_menu_title"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_toEndOf="@id/darkMenuIcon"/>
+                android:layout_toEndOf="@id/darkMenuIcon"
+                tools:ignore="RelativeOverlap" />
+
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/firstOption"
@@ -97,16 +108,19 @@
                 android:id="@+id/musicIcon"
                 android:src="@drawable/baseline_music_note_24"
                 android:background="@drawable/round_back_2"
-                android:padding="12dp"/>
+                android:padding="12dp"
+                android:contentDescription="@string/background_music_title" />
             <TextView
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Background Music"
+                android:text="@string/background_music_title"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_toEndOf="@id/musicIcon"/>
+                android:layout_toEndOf="@id/musicIcon"
+                tools:ignore="RelativeOverlap" />
+
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/secondOption"
@@ -130,16 +144,19 @@
                 android:id="@+id/privateAccountIcon"
                 android:src="@drawable/baseline_security_24"
                 android:background="@drawable/round_back_3"
-                android:padding="12dp"/>
+                android:padding="12dp"
+                android:contentDescription="@string/private_account_title"/>
             <TextView
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Private Account"
+                android:text="@string/private_account_title"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_toEndOf="@id/privateAccountIcon"/>
+                android:layout_toEndOf="@id/privateAccountIcon"
+                tools:ignore="RelativeOverlap" />
+
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/thirdOption"
@@ -173,17 +190,19 @@
                 android:id="@+id/accountIcon"
                 android:src="@drawable/baseline_person_white_24"
                 android:background="@drawable/round_back_4"
-                android:padding="12dp"/>
+                android:padding="12dp"
+                android:contentDescription="@string/signUp" />
             <TextView
                 android:id="@+id/profileStatus"
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Sign Up"
+                android:text="@string/signUp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_toEndOf="@id/accountIcon"/>
+                android:layout_toEndOf="@id/accountIcon"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/imageViewAccount"
@@ -191,7 +210,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_keyboard_arrow_right_24"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/right_arrow_image" />
         </RelativeLayout>
         <!-- 2 Option Changed-->
         <RelativeLayout
@@ -206,17 +226,19 @@
                 android:layout_height="40dp"
                 android:src="@drawable/baseline_delete_forever_24"
                 android:background="@drawable/round_back_1"
-                android:padding="12dp"/>
+                android:padding="12dp"
+                android:contentDescription="@string/delete_account_title"/>
             <TextView
                 android:id="@+id/deleteAccountTextView"
                 android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="Delete Account"
+                android:text="@string/delete_account_title"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_toEndOf="@id/deleteAccountIcon"/>
+                android:layout_toEndOf="@id/deleteAccountIcon"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/deleteProfileImgView"
@@ -225,7 +247,8 @@
                 android:src="@drawable/baseline_keyboard_arrow_right_24"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:contentDescription="@string/right_arrow_image"/>
         </RelativeLayout>
     </LinearLayout>
     <!--  Section 3 -->

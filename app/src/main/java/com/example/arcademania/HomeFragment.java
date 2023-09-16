@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
             String lastName = retrieveLastName();
             userTextView.setText(lastName);
         } else {
-            userTextView.setText("User");
+            userTextView.setText(R.string.user_text);
         }
 
         return rootView;

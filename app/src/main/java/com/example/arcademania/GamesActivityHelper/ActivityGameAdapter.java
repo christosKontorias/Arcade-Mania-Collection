@@ -5,20 +5,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.arcademania.R;
 import java.util.List;
 
 public class ActivityGameAdapter extends RecyclerView.Adapter<ActivityGameAdapter.GameViewHolder> {
 
-    private List<ActivityGameData> gameList;
+    private final List<ActivityGameData> gameList;
 
     public ActivityGameAdapter(List<ActivityGameData> gameList) {
         this.gameList = gameList;
     }
 
+    @NonNull
     @Override
-    public GameViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public GameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.games_item, parent, false);
         return new GameViewHolder(itemView);
     }

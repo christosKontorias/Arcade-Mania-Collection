@@ -35,7 +35,9 @@
                 android:src="@drawable/create_profile_person_upload_image"
                 android:layout_gravity="center_horizontal"
                 android:background="#C9756D6D"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:contentDescription="Upload Profile Image"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,7 +119,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="16dp"
-                android:hint="@string/birthday"
+                android:hint="@string/birthday_title2"
                 app:startIconDrawable="@drawable/baseline_birthday_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -131,7 +133,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/country"
+                android:hint="@string/country_title2"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
@@ -153,7 +155,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="16dp"
-                android:hint="@string/mobile"
+                android:hint="@string/mobile_title2"
                 app:counterEnabled="true"
                 app:counterMaxLength="12"
                 app:prefixText="+"
@@ -174,7 +176,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginRight="16dp"
-                android:hint="@string/post_code"
+                android:hint="@string/post_code_title2"
                 app:startIconDrawable="@drawable/create_profile_post_code">
 
                 <com.google.android.material.textfield.TextInputEditText

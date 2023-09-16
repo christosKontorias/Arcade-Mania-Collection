@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.arcademania.R;
 import com.google.android.material.card.MaterialCardView;
@@ -20,7 +22,7 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.mList = mList;
     }
 
-    public class GameTitleViewHolderTypeOne extends RecyclerView.ViewHolder {
+    public static class GameTitleViewHolderTypeOne extends RecyclerView.ViewHolder {
         ImageView gameLogo;
         TextView gameTitle;
         MaterialCardView gameCardView;
@@ -33,7 +35,7 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public class GameTitleViewHolderTypeTwo extends RecyclerView.ViewHolder {
+    public static class GameTitleViewHolderTypeTwo extends RecyclerView.ViewHolder {
         ImageView gameLogo;
         TextView gameTitle;
         MaterialCardView gameCardView;
@@ -51,8 +53,9 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         if (viewType == VIEW_TYPE_ONE) {
@@ -65,8 +68,9 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         throw new IllegalArgumentException("Invalid view type");
     }
 
+
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         SearchGameData item = mList.get(position);
 
         if (holder instanceof GameTitleViewHolderTypeOne) {

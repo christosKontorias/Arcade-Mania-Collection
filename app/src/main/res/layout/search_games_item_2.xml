@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -21,7 +20,7 @@
             android:id="@+id/gameTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Game Name"
+            android:text="@string/game_name"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -29,6 +28,7 @@
             app:layout_constraintEnd_toStartOf="@+id/cardView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardView" />
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -45,7 +45,8 @@
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
                 android:background="@drawable/round_background_images_search"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY"
+                android:contentDescription="@string/image_logo" />
         </androidx.cardview.widget.CardView>
 
 

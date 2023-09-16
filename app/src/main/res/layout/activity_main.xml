@@ -41,6 +41,8 @@
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="40dp"
         android:id="@+id/fab"
-        app:tint="@color/lavender" />
+        app:tint="@color/lavender"
+        android:contentDescription="@string/settings_button_description" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

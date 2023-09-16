@@ -29,6 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:background="@drawable/top_background_profile"
+                    android:contentDescription="@string/background_image_description"
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="Settings"
+                    android:text="@string/settings_title"
                     android:textColor="#FFFFFF"
                     android:textSize="28sp"
                     android:textStyle="bold"
@@ -47,6 +48,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/imageView7"
                     app:layout_constraintStart_toStartOf="@+id/imageView7"
                     app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
 
                 <LinearLayout
                     android:id="@+id/linearLayout3"
@@ -81,20 +83,23 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/graphics_quality_icon" />
+                            app:srcCompat="@drawable/graphics_quality_icon"
+                            android:contentDescription="@string/graphics_quality" />
+
 
                         <TextView
                             android:id="@+id/txt_title1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:text="Graphics Quality"
+                            android:text="@string/graphics_quality"
                             android:textColor="#000000"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imgView1"
                             app:layout_constraintStart_toEndOf="@+id/imgView1"
                             app:layout_constraintTop_toTopOf="@+id/imgView1" />
+
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -105,7 +110,9 @@
                             app:layout_constraintBottom_toBottomOf="@+id/txt_title1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/txt_title1"
-                            app:srcCompat="@drawable/baseline_arrow_circle_right_24" />
+                            app:srcCompat="@drawable/baseline_arrow_circle_right_24"
+                            android:contentDescription="@string/right_arrow_image" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--Provide options to control the volume of in-game sounds and music.-->
@@ -127,20 +134,22 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/sound_music_icon" />
+                            app:srcCompat="@drawable/sound_music_icon"
+                            android:contentDescription="@string/sound_and_music" />
 
                         <TextView
                             android:id="@+id/txt_title2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:text="Sound &amp; Music"
+                            android:text="@string/sound_and_music"
                             android:textColor="#000000"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imgView2"
                             app:layout_constraintStart_toEndOf="@+id/imgView2"
                             app:layout_constraintTop_toTopOf="@+id/imgView2" />
+
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -151,9 +160,10 @@
                             app:layout_constraintBottom_toBottomOf="@+id/txt_title2"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/txt_title2"
-                            app:srcCompat="@drawable/baseline_arrow_circle_right_24" />
+                            app:srcCompat="@drawable/baseline_arrow_circle_right_24"
+                            android:contentDescription="@string/right_arrow_image" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                    <!--Provide options for enabling features like two-factor authentication or fingerprint/face recognition login.-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -172,20 +182,22 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/security_privacy_icon" />
+                            app:srcCompat="@drawable/security_privacy_icon"
+                            android:contentDescription="@string/security_and_privacy" />
 
                         <TextView
                             android:id="@+id/txt_title3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:text="Security &amp; Privacy"
+                            android:text="@string/security_and_privacy"
                             android:textColor="#000000"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imgView3"
                             app:layout_constraintStart_toEndOf="@+id/imgView3"
                             app:layout_constraintTop_toTopOf="@+id/imgView3" />
+
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -196,7 +208,9 @@
                             app:layout_constraintBottom_toBottomOf="@+id/txt_title3"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/txt_title3"
-                            app:srcCompat="@drawable/baseline_arrow_circle_right_24" />
+                            app:srcCompat="@drawable/baseline_arrow_circle_right_24"
+                            android:contentDescription="@string/right_arrow_image" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--Provide options for users to access help resources, contact support, or provide feedback about the app.-->
@@ -218,14 +232,15 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/help_feedback_icon" />
+                            app:srcCompat="@drawable/help_feedback_icon"
+                            android:contentDescription="@string/help_and_feedback" />
 
                         <TextView
                             android:id="@+id/txt_title4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:text="Help and Feedback"
+                            android:text="@string/help_and_feedback"
                             android:textColor="#000000"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -242,7 +257,9 @@
                             app:layout_constraintBottom_toBottomOf="@+id/txt_title4"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/txt_title4"
-                            app:srcCompat="@drawable/baseline_arrow_circle_right_24" />
+                            app:srcCompat="@drawable/baseline_arrow_circle_right_24"
+                            android:contentDescription="@string/right_arrow_image" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--Allow users to adjust font size and style to improve readability.-->
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -263,14 +280,15 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/font_size_style_icon" />
+                            app:srcCompat="@drawable/font_size_style_icon"
+                            android:contentDescription="@string/font_size_and_style" />
 
                         <TextView
                             android:id="@+id/txt_title5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
-                            android:text="Font Size and Style"
+                            android:text="@string/font_size_and_style"
                             android:textColor="#000000"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -287,7 +305,9 @@
                             app:layout_constraintBottom_toBottomOf="@+id/txt_title5"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/txt_title5"
-                            app:srcCompat="@drawable/baseline_arrow_circle_right_24" />
+                            app:srcCompat="@drawable/baseline_arrow_circle_right_24"
+                            android:contentDescription="@string/right_arrow_image" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <Button
@@ -296,7 +316,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#c4127a"
-                        android:text="Back"
+                        android:text="@string/back"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp" />
                 </LinearLayout>
