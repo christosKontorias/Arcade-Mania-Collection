@@ -2,35 +2,29 @@ package com.example.arcademania;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-
 public class CreateProfileActivity extends AppCompatActivity {
+
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     private TextInputEditText editTextName, editTextSurname, editTextEmail, editTextBirthday, editTextMobile, editTextCountry, editTextPostCode;
     private ImageView uploadImageView;
     private Uri selectedImageUri;
-    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-
         setContentView(R.layout.activity_create_profile);
 
         uploadImageView = findViewById(R.id.uploadImage);
@@ -46,13 +40,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         editTextPostCode = findViewById(R.id.editTextPostCode);
 
         Button submitButton = findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submitForm();
-            }
-        });
-
+        submitButton.setOnClickListener(v -> submitForm());
     }
 
     private void openImagePicker() {
@@ -93,11 +81,9 @@ public class CreateProfileActivity extends AppCompatActivity {
 
         if (selectedImageUri != null) {
             editor.putString("imageUri", selectedImageUri.toString());
-            editor.apply();
         }
 
         editor.putBoolean("accountCreated", true); // Set the flag to true
-
         editor.putString("name", name);
         editor.putString("surname", surname);
         editor.putString("email", email);
@@ -118,7 +104,6 @@ public class CreateProfileActivity extends AppCompatActivity {
         finish();
     }
 
-
     private void updateFragmentProfile() {
         ProfileFragment fragmentProfile = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("ProfileFragment");
         if (fragmentProfile != null) {
@@ -133,6 +118,4 @@ public class CreateProfileActivity extends AppCompatActivity {
     private void navigateBackToFragmentProfile() {
         super.onBackPressed();
     }
-
 }
-

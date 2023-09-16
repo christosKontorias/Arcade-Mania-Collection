@@ -5,11 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.arcademania.R;
-import com.google.android.material.card.MaterialCardView;
-
 import java.util.List;
 
 public class ActivityGameAdapter extends RecyclerView.Adapter<ActivityGameAdapter.GameViewHolder> {
@@ -19,7 +16,6 @@ public class ActivityGameAdapter extends RecyclerView.Adapter<ActivityGameAdapte
     public ActivityGameAdapter(List<ActivityGameData> gameList) {
         this.gameList = gameList;
     }
-
 
     @Override
     public GameViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

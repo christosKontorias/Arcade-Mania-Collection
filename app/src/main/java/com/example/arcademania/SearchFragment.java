@@ -11,13 +11,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.arcademania.SearchFragmentHelper.SearchGameAdapter;
 import com.example.arcademania.SearchFragmentHelper.SearchGameData;
-
 import java.util.ArrayList;
 import java.util.Locale;
-
 
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
@@ -59,9 +56,10 @@ public class SearchFragment extends Fragment {
     private void filterList(String query) {
         if (query != null) {
             ArrayList<SearchGameData> filteredList = new ArrayList<>();
-            for (SearchGameData i : mList) {
-                if (i.getGameTitle().toLowerCase(Locale.ROOT).contains(query)) {
-                    filteredList.add(i);
+            String lowerCaseQuery = query.toLowerCase(Locale.ROOT);
+            for (SearchGameData game : mList) {
+                if (game.getGameTitle().toLowerCase(Locale.ROOT).contains(lowerCaseQuery)) {
+                    filteredList.add(game);
                 }
             }
 
@@ -92,5 +90,3 @@ public class SearchFragment extends Fragment {
         mList.add(new SearchGameData("Double Dragon", R.drawable.double_dragon_logo));
     }
 }
-
-

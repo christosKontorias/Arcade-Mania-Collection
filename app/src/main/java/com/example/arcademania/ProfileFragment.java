@@ -53,35 +53,42 @@ public class ProfileFragment extends Fragment{
         linearLayoutDetails = rootView.findViewById(R.id.linearLayoutDetails);
         createProfileButton = rootView.findViewById(R.id.btn_create_profile);
     }
+
     private void setupHomeClickListener(View rootView) {
         LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_home);
         linearLayoutMenu.setOnClickListener(v -> { replaceWithHomeFragment(new HomeFragment());
         });
     }
+
     private void replaceWithHomeFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment, "HomeFragment");
         fragmentTransaction.commit();
     }
+
     private void setupGameListClickListener(View rootView) {
         LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_games);
         linearLayoutMenu.setOnClickListener(v -> replaceWithSearchFragment());
     }
+
     private void replaceWithSearchFragment() {
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, new SearchFragment(), "SearchFragment");
         fragmentTransaction.commit();
     }
+
     private void setupSettingsClickListener(View rootView) {
         LinearLayout linearLayoutSettings = rootView.findViewById(R.id.linear_layout_settings);
         linearLayoutSettings.setOnClickListener(v -> startSettingsProfileActivity());
     }
+
     private void startSettingsProfileActivity() {
         Intent intent = new Intent(getActivity(), SettingsProfileActivity.class);
         startActivity(intent);
     }
+
     private void setupCreateProfileButton() {
         boolean profileCreated = checkIfProfileCreated();
         createProfileButton.setText(profileCreated ? "Edit Profile" : "Create Profile");
@@ -93,10 +100,12 @@ public class ProfileFragment extends Fragment{
             }
         });
     }
+
     private void startCreateProfileActivity() {
         Intent intent = new Intent(getActivity(), CreateProfileActivity.class);
         startActivity(intent);
     }
+
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
@@ -106,6 +115,7 @@ public class ProfileFragment extends Fragment{
         String email = sharedPreferences.getString("email", "");
         return !name.isEmpty() && !surname.isEmpty() && !email.isEmpty();
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -113,6 +123,7 @@ public class ProfileFragment extends Fragment{
             parentActivity = (MainActivity) context;
         }
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -130,6 +141,7 @@ public class ProfileFragment extends Fragment{
         }
         setupCreateProfileButton();
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -137,6 +149,7 @@ public class ProfileFragment extends Fragment{
             parentActivity.showBottomAppBar();
         }
     }
+
     public void updateProfileData() {
         // Obtain the Context from the parent activity
         Context context = getActivity();
@@ -186,6 +199,7 @@ public class ProfileFragment extends Fragment{
             Glide.with(requireContext()).load(imageUri).into(imgProfile);
         }
     }
+
     private String getAsteriskText(String text) {
         // Replace the characters in the text with asterisks
         return text.replaceAll(".", "*");

@@ -6,18 +6,14 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.arcademania.R;
 import com.google.android.material.card.MaterialCardView;
-
 import java.util.List;
 
 public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int VIEW_TYPE_ONE = 1;
     private static final int VIEW_TYPE_TWO = 2;
-
     private List<SearchGameData> mList;
 
     public SearchGameAdapter(List<SearchGameData> mList) {
@@ -25,7 +21,6 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class GameTitleViewHolderTypeOne extends RecyclerView.ViewHolder {
-        // Views for item type one
         ImageView gameLogo;
         TextView gameTitle;
         MaterialCardView gameCardView;
@@ -39,7 +34,6 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class GameTitleViewHolderTypeTwo extends RecyclerView.ViewHolder {
-        // Views for item type two
         ImageView gameLogo;
         TextView gameTitle;
         MaterialCardView gameCardView;
@@ -68,7 +62,6 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             View view = inflater.inflate(R.layout.search_games_item_2, parent, false);
             return new GameTitleViewHolderTypeTwo(view);
         }
-
         throw new IllegalArgumentException("Invalid view type");
     }
 
@@ -103,7 +96,6 @@ public class SearchGameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public int getItemCount() {
         return mList.size();
     }
-
 }
 
 

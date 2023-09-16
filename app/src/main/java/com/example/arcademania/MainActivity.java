@@ -32,11 +32,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity{
     ActivityMainBinding binding;
-    FloatingActionButton fab;
     private BottomAppBar bottomAppBar;
     private FloatingActionButton floatingActionButton;
-
-    private static final int REQUEST_CREATE_PROFILE = 1;
     private Dialog dialog;
     private MediaPlayer backgroundMusicPlayer;
 
@@ -44,18 +41,13 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
-
         bottomAppBar = findViewById(R.id.bottomAppBar);
-
         backgroundMusicPlayer = MediaPlayer.create(this, R.raw.background_music);
-
         floatingActionButton = findViewById(R.id.fab);
 
-        fab = findViewById(R.id.fab);
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -75,75 +67,44 @@ public class MainActivity extends AppCompatActivity{
             return true;
         });
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showBottomDialog();
-            }
-        });
+        binding.fab.setOnClickListener(view -> showBottomDialog());
     }
 
-    private  void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
+    private void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .commit();
     }
     private void showBottomDialog() {
-
-        //final Dialog dialog = new Dialog(this);
-
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottom_nav_settings);
 
         TextView settingsTextView = dialog.findViewById(R.id.settingsTextView);
-        settingsTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SettingsProfileActivity.class);
-                startActivity(intent);
-
-                // Dismiss the dialog
-                dialog.dismiss();
-            }
+        settingsTextView.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SettingsProfileActivity.class);
+            startActivity(intent);
+            dialog.dismiss();
         });
 
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        cancelButton.setOnClickListener(view -> dialog.dismiss());
 
         setupSwitchListeners(dialog);
 
-        //Check If the user create the account
-        boolean userHasCreatedAccount  = checkIfProfileCreated();
+        boolean userHasCreatedAccount = checkIfProfileCreated();
         TextView profileStatus = dialog.findViewById(R.id.profileStatus);
-
         profileStatus.setText(userHasCreatedAccount ? "Edit Account" : "Sign Up");
 
         ImageView imageViewAccount = dialog.findViewById(R.id.imageViewAccount);
-        imageViewAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
-                startActivity(intent);
-
-                dialog.dismiss();
-            }
+        imageViewAccount.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CreateProfileActivity.class);
+            startActivity(intent);
+            dialog.dismiss();
         });
 
         ImageView deleteAccountButton = dialog.findViewById(R.id.deleteProfileImgView);
-        deleteAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Show the delete confirmation dialog
-                showDeleteConfirmationDialog(dialog);
-            }
-        });
+        deleteAccountButton.setOnClickListener(view -> showDeleteConfirmationDialog());
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -151,85 +112,51 @@ public class MainActivity extends AppCompatActivity{
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
+
     private void setupSwitchListeners(Dialog dialog) {
         SwitchCompat switch1 = dialog.findViewById(R.id.firstOption);
         SwitchCompat switch2 = dialog.findViewById(R.id.secondOption);
         SwitchCompat switch3 = dialog.findViewById(R.id.thirdOption);
 
-        // Load the switch states from SharedPreferences and set them
-        SharedPreferences sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
-        //switch1.setChecked(sharedPreferences.getBoolean("Switch1", false));
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch1.setChecked(currentNightMode == Configuration.UI_MODE_NIGHT_YES);
 
-        switch2.setChecked(sharedPreferences.getBoolean("Switch2", false));
-        boolean switch3State = sharedPreferences.getBoolean("Switch3", false);
-        switch3.setChecked(switch3State);
+        switch2.setChecked(getSharedPreferences("SwitchState", Context.MODE_PRIVATE).getBoolean("Switch2", false));
+        switch3.setChecked(getSharedPreferences("SwitchState", Context.MODE_PRIVATE).getBoolean("Switch3", false));
 
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    // Switch 1 is ON, enable dark mode
-                    showToast("Dark Menu is enabled");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                } else {
-                    // Switch 1 is OFF, enable light mode
-                    showToast("Light Menu is enabled");
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-                // Save the state of Switch 1
-                saveSwitchState("Switch1", isChecked);
-            }
+        switch1.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            showToast(isChecked ? "Dark Menu is enabled" : "Light Menu is enabled");
+            AppCompatDelegate.setDefaultNightMode(isChecked ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+            saveSwitchState("Switch1", isChecked);
         });
 
-        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    showToast("Background music is playing");
-                    startBackgroundMusic();
-                } else {
-                    showToast("Background music is stopped");
-                    stopBackgroundMusic();
-                }
-                // Save the state of Switch 2
-                saveSwitchState("Switch2", isChecked);
-            }
+        switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            showToast(isChecked ? "Background music is playing" : "Background music is stopped");
+            if (isChecked) startBackgroundMusic();
+            else stopBackgroundMusic();
+            saveSwitchState("Switch2", isChecked);
         });
 
-        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    showToast("Profile is now private");
-                } else {
-                    showToast("Profile is now public");
-                }
-                // Save the state of Switch 3
-                saveSwitchState("Switch3", isChecked);
-
-                // Notify the ProfileFragment about the change
-                notifyProfileFragment(isChecked);
-            }
+        switch3.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            showToast(isChecked ? "Profile is now private" : "Profile is now public");
+            saveSwitchState("Switch3", isChecked);
+            notifyProfileFragment(isChecked);
         });
     }
+
     private void notifyProfileFragment(boolean isChecked) {
-        // Save the state of Switch 3 in SharedPreferences
-        SharedPreferences switchSharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = switchSharedPreferences.edit();
+        SharedPreferences.Editor editor = getSharedPreferences("SwitchState", Context.MODE_PRIVATE).edit();
         editor.putBoolean("Switch3", isChecked);
         editor.apply();
     }
 
     private void saveSwitchState(String switchKey, boolean isChecked) {
-        SharedPreferences sharedPreferences = getSharedPreferences("SwitchState", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences.Editor editor = getSharedPreferences("SwitchState", Context.MODE_PRIVATE).edit();
         editor.putBoolean(switchKey, isChecked);
         editor.apply();
     }
 
-    private void showDeleteConfirmationDialog(final Dialog parentDialog) {
+    private void showDeleteConfirmationDialog() {
         boolean isAccountCreated = checkIfProfileCreated();
 
         if (!isAccountCreated) {
@@ -238,25 +165,19 @@ public class MainActivity extends AppCompatActivity{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Delete Account Confirmation");
             builder.setMessage("Are you sure you want to delete your account?");
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    boolean isAccountDeleted = deleteAccount();
-                    if (isAccountDeleted) {
-                        TextView profileStatus = parentDialog.findViewById(R.id.profileStatus);
-                        profileStatus.setText("Sign Up");
-                        parentDialog.dismiss();
-                        showToast("Account deleted successfully!");
-                    } else {
-                        showToast("Failed to delete the account. Please try again.");
-                    }
+            builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                boolean isAccountDeleted = deleteAccount();
+                if (isAccountDeleted) {
+                    TextView profileStatus = dialog.findViewById(R.id.profileStatus);
+                    profileStatus.setText("Sign Up");
+                    dialog.dismiss();
+                    showToast("Account deleted successfully!");
+                } else {
+                    showToast("Failed to delete the account. Please try again.");
                 }
             });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    // User clicked "No," do nothing
-                }
+            builder.setNegativeButton("No", (dialogInterface, i) -> {
+                // User clicked "No," do nothing
             });
             AlertDialog dialog = builder.create();
             dialog.show();
@@ -270,27 +191,24 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void clearSharedPreferences() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.clear();
         editor.apply();
     }
 
     private void navigateToInitialScreen() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, new ProfileFragment());
-        transaction.addToBackStack(null);
-        transaction.commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ProfileFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     private boolean checkIfProfileCreated() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean accountCreated = sharedPreferences.getBoolean("accountCreated", false);
-
         String name = sharedPreferences.getString("name", "");
         String surname = sharedPreferences.getString("surname", "");
         String email = sharedPreferences.getString("email", "");
-
         return accountCreated && !name.isEmpty() && !surname.isEmpty() && !email.isEmpty();
     }
 
@@ -323,12 +241,9 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Dismiss the dialog if it's showing to prevent window leak
         if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
-
-        // Release the MediaPlayer resources when the activity is destroyed
         if (backgroundMusicPlayer != null) {
             backgroundMusicPlayer.release();
             backgroundMusicPlayer = null;

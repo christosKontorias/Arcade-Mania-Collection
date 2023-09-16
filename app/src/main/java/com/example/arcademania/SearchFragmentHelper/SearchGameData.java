@@ -1,6 +1,5 @@
 package com.example.arcademania.SearchFragmentHelper;
 
-
 public class SearchGameData {
     private String gameTitle;
     private int gameLogo;
