@@ -19,13 +19,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
-
 public class ProfileFragment extends Fragment{
     private MainActivity parentActivity;
     private LinearLayout linearLayoutDetails;
     private Button createProfileButton;
     private ImageView imgProfile;
     private TextView nameTextView, surnameTextView, emailTextView, birthdayTextView, mobileTextView, countryTextView, postCodeTextView;
+
+    private BottomNavigationListener bottomNavigationListener;
+
+    public interface BottomNavigationListener {
+        void onNavigateToHome();
+        void navigateToGamesActivity();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,27 +61,39 @@ public class ProfileFragment extends Fragment{
     }
 
     private void setupHomeClickListener(View rootView) {
-        LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_home);
-        linearLayoutMenu.setOnClickListener(v -> replaceWithHomeFragment(new HomeFragment()));
+        LinearLayout linearLayoutHome = rootView.findViewById(R.id.linear_layout_home);
+        linearLayoutHome.setOnClickListener(v -> navigateToHomeFragment());
     }
 
-    private void replaceWithHomeFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment, "HomeFragment");
-        fragmentTransaction.commit();
+    private void navigateToHomeFragment() {
+        HomeFragment homeFragment = new HomeFragment();
+        replaceFragment(homeFragment);
+        if (bottomNavigationListener != null) {
+            bottomNavigationListener.onNavigateToHome();
+        }
     }
 
     private void setupGameListClickListener(View rootView) {
-        LinearLayout linearLayoutMenu = rootView.findViewById(R.id.linear_layout_games);
-        linearLayoutMenu.setOnClickListener(v -> replaceWithSearchFragment());
+        LinearLayout linearLayoutGame = rootView.findViewById(R.id.linear_layout_games);
+        linearLayoutGame.setOnClickListener(v -> navigateToGamesActivity());
     }
 
-    private void replaceWithSearchFragment() {
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, new SearchFragment(), "SearchFragment");
-        fragmentTransaction.commit();
+    private void navigateToGamesActivity() {
+        GamesActivity gamesActivity = new GamesActivity();
+        replaceFragment(gamesActivity);
+        if (bottomNavigationListener != null) {
+            bottomNavigationListener.navigateToGamesActivity();
+        }
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        if (getActivity() != null) {
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frame_layout, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
     }
 
     private void setupSettingsClickListener(View rootView) {
@@ -119,6 +137,7 @@ public class ProfileFragment extends Fragment{
         super.onAttach(context);
         if (context instanceof MainActivity) {
             parentActivity = (MainActivity) context;
+            bottomNavigationListener = (MainActivity) context;
         }
     }
 

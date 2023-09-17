@@ -24,14 +24,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.arcademania.databinding.ActivityMainBinding;
 import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements ProfileFragment.BottomNavigationListener {
     ActivityMainBinding binding;
     private BottomAppBar bottomAppBar;
     private FloatingActionButton floatingActionButton;
     private Dialog dialog;
     private MediaPlayer backgroundMusicPlayer;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
         bottomAppBar = findViewById(R.id.bottomAppBar);
         backgroundMusicPlayer = MediaPlayer.create(this, R.raw.background_music);
         floatingActionButton = findViewById(R.id.fab);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         binding.bottomNavigationView.setBackground(null);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -61,7 +64,6 @@ public class MainActivity extends AppCompatActivity{
             return true;
         });
 
-
         binding.fab.setOnClickListener(view -> showBottomDialog());
     }
 
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity{
                 .replace(R.id.frame_layout, fragment)
                 .commit();
     }
+
     private void showBottomDialog() {
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -243,5 +246,14 @@ public class MainActivity extends AppCompatActivity{
             backgroundMusicPlayer.release();
             backgroundMusicPlayer = null;
         }
+    }
+    @Override
+    public void onNavigateToHome() {
+        bottomNavigationView.setSelectedItemId(R.id.home);
+    }
+
+    @Override
+    public void navigateToGamesActivity() {
+        bottomNavigationView.setSelectedItemId(R.id.games);
     }
 }

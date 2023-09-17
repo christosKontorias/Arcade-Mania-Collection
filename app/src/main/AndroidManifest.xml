@@ -27,6 +27,9 @@
         <activity
             android:name=".SettingsProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".GamesActivity"
+            android:exported="false" />
 
     </application>
 
