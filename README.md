@@ -18,7 +18,7 @@ Arcade Mania Collection provides a unique and immersive experience for those who
 
 To install and run this application, follow these steps:
 
-1. Clone the repository: git clone https://github.com/christosKontorias/ArcadeMania.git
+1. Clone the repository: git clone https://github.com/christosKontorias/Arcade-Mania-Collection.git
 2. Open the project in Android Studio.
 3. Build and run the application on an Android emulator or device.
 
