@@ -4,11 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.B
             if (itemId == R.id.home) {
                 replaceFragment(new HomeFragment());
             } else if (itemId == R.id.games) {
-                replaceFragment(new GamesActivity());
+                replaceFragment(new GamesFragment());
             } else if (itemId == R.id.search) {
                 replaceFragment(new SearchFragment());
             } else if (itemId == R.id.profile) {
@@ -115,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.B
         SwitchCompat switch1 = dialog.findViewById(R.id.firstOption);
         SwitchCompat switch2 = dialog.findViewById(R.id.secondOption);
         SwitchCompat switch3 = dialog.findViewById(R.id.thirdOption);
+        FloatingActionButton fab = findViewById(R.id.fab);
 
         int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch1.setChecked(currentNightMode == Configuration.UI_MODE_NIGHT_YES);
@@ -126,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements ProfileFragment.B
             showToast(isChecked ? "Dark Menu is enabled" : "Light Menu is enabled");
             AppCompatDelegate.setDefaultNightMode(isChecked ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
             saveSwitchState("Switch1", isChecked);
+
         });
 
         switch2.setOnCheckedChangeListener((buttonView, isChecked) -> {

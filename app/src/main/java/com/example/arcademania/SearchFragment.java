@@ -26,12 +26,12 @@ public class SearchFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 
-        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView); // Declare recyclerView as a local variable
-        SearchView searchView = rootView.findViewById(R.id.searchView); // Declare searchView as a local variable
+        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
+        SearchView searchView = rootView.findViewById(R.id.searchView);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mList = new ArrayList<>(); // Initialize mList
+        mList = new ArrayList<>();
         addDataToList();
         adapter = new SearchGameAdapter(mList);
         recyclerView.setAdapter(adapter);

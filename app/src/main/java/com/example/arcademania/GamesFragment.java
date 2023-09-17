@@ -17,7 +17,7 @@ import com.example.arcademania.GamesActivityHelper.ActivityGameData;
 import java.util.ArrayList;
 
 
-public class GamesActivity extends Fragment {
+public class GamesFragment extends Fragment {
 
     @Nullable
     @Override
@@ -42,11 +42,10 @@ public class GamesActivity extends Fragment {
         // Calculate the number of games
         int gameCount = gameList.size();
 
-     // Update the game count TextView with the string resource
+         // Update the game count TextView with the string resource
         String gameCountText = getResources().getString(R.string.game_count_format, gameCount);
         TextView gameCountTextView = rootView.findViewById(R.id.txt_CountGames);
         gameCountTextView.setText(gameCountText);
-
 
         return rootView;
     }

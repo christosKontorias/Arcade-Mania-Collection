@@ -79,8 +79,8 @@ public class ProfileFragment extends Fragment{
     }
 
     private void navigateToGamesActivity() {
-        GamesActivity gamesActivity = new GamesActivity();
-        replaceFragment(gamesActivity);
+        GamesFragment gamesFragment = new GamesFragment();
+        replaceFragment(gamesFragment);
         if (bottomNavigationListener != null) {
             bottomNavigationListener.navigateToGamesActivity();
         }
