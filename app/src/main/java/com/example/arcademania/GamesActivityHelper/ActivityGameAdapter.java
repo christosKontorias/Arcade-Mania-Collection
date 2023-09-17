@@ -31,6 +31,17 @@ public class ActivityGameAdapter extends RecyclerView.Adapter<ActivityGameAdapte
         ActivityGameData currentItem = gameList.get(position);
         holder.gameLogoImageView.setImageResource(currentItem.getGameLogo()); // Use your method to get the logo resource
         holder.gameTitleTextView.setText(currentItem.getGameTitle());
+
+        // Set an OnClickListener for the item view
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(currentItem);
+
+                }
+            }
+        });
     }
 
     @Override
@@ -48,4 +59,15 @@ public class ActivityGameAdapter extends RecyclerView.Adapter<ActivityGameAdapte
             gameTitleTextView = itemView.findViewById(R.id.gameTitle);
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(ActivityGameData gameData);
+    }
+
+    private OnItemClickListener listener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
 }
