@@ -44,5 +44,4 @@
         app:tint="@color/lavender"
         android:contentDescription="@string/settings_button_description" />
 
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
